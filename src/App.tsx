@@ -1,9 +1,20 @@
-﻿import { ReactNode, useEffect, useRef, useState } from "react";
+﻿import { Fragment, ReactNode, useEffect, useRef, useState } from "react";
+
+const partnerPages = [
+  { title: "Our Partner Program", to: "/our-partner-program" },
+  { title: "Our Professional Certifications", to: "/our-professional-certifications" },
+];
+
+const aboutPages = [
+  { title: "Overview", to: "/about-us" },
+  { title: "Our Team", to: "/our-team-2" },
+  { title: "Resources", to: "/resources" },
+];
 
 const heroTitles = [
-  "AI-enabled Digital Transformation",
-  "Elevate Stakeholder Engagement",
-  "Advanced Analytics & Data Management",
+  "Rapid Deployment",
+  "Fit to Purpose",
+  "Cost Efficient",
 ];
 
 const breadcrumbMap: Record<string, { label: string; to: string }[]> = {
@@ -31,7 +42,7 @@ const breadcrumbMap: Record<string, { label: string; to: string }[]> = {
   "/aneesh-kumar-bhola": [{ label: "About Us", to: "/about-us" }, { label: "Our Team", to: "/our-team-2" }, { label: "Aneesh Kumar Bhola", to: "/aneesh-kumar-bhola" }],
   "/arnab-sharma": [{ label: "About Us", to: "/about-us" }, { label: "Our Team", to: "/our-team-2" }, { label: "Arnab Sharma", to: "/arnab-sharma" }],
 };
-import { Link, Navigate, NavLink, Route, Routes, useLocation } from "react-router-dom";
+import { Link, Navigate, NavLink, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import {
   aboutPage,
   capabilityCards,
@@ -46,13 +57,12 @@ import {
   offerings,
   offeringsIntro,
   partnerProgramPage,
-  partnersPage,
   products,
   productsIntro,
   resources,
   resourcesIntro,
+  type ResourceItem,
   teamGlobalPresence,
-  teamMembers,
   teamPage,
   whyNyalazone,
   type TextPage,
@@ -71,11 +81,11 @@ function App() {
             path="/offerings"
             element={<CollectionPage title="Offerings" intro={offeringsIntro} items={offerings} className="section-vivid" />}
           />
-          <Route path="/partners" element={<TextPageView page={partnersPage} />} />
+          <Route path="/partners" element={<TextPageView page={partnerProgramPage} />} />
           <Route path="/about-us" element={<TextPageView page={aboutPage} />} />
           <Route path="/our-team-2" element={<TeamPageView />} />
-          <Route path="/resources" element={<CollectionPage title="Resources" intro={resourcesIntro} items={resources} />} />
-          <Route path="/careers" element={<TextPageView page={careersPage} />} />
+          <Route path="/resources" element={<ResourcesPageView />} />
+          <Route path="/careers" element={<CareersPageView />} />
           <Route path="/contact-us-2" element={<ContactPageView />} />
           <Route path="/our-partner-program" element={<TextPageView page={partnerProgramPage} />} />
           <Route path="/our-professional-certifications" element={<TextPageView page={certificationsPage} />} />
@@ -100,10 +110,12 @@ function normalizePath(path: string) {
 function Header() {
   const location = useLocation();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const logoUrl = "https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png";
 
   useEffect(() => {
     setOpenMenu(null);
+    setMobileOpen(false);
   }, [location.pathname]);
 
   return (
@@ -113,7 +125,7 @@ function Header() {
           <img className="logo-image" src={logoUrl} alt="Nyalazone" />
         </Link>
 
-        <nav aria-label="Main navigation" className="main-nav">
+        <nav aria-label="Main navigation" className={`main-nav${mobileOpen ? " main-nav-open" : ""}`}>
           {navItems.map((item) => {
             const isActive =
               location.pathname === item.to || (item.to !== "/" && location.pathname.startsWith(item.to));
@@ -170,6 +182,17 @@ function Header() {
             );
           })}
         </nav>
+
+        <button
+          className={`nav-hamburger${mobileOpen ? " hamburger-open" : ""}`}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
     </header>
   );
@@ -209,7 +232,7 @@ function RotatingHeroTitle() {
         setIndex((i) => (i + 1) % heroTitles.length);
         setVisible(true);
       }, 380);
-    }, 3200);
+    }, 3600);
     return () => {
       clearInterval(interval);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -231,20 +254,27 @@ function OfferingsScroll() {
 
   return (
     <div className="offerings-scroll-wrap">
-      <button className="scroll-arrow" onClick={() => scroll("left")} aria-label="Scroll left">&#8249;</button>
+      <button className="scroll-arrow" onClick={() => scroll("left")} aria-label="Scroll left">
+        <svg className="scroll-arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      </button>
       <div className="offerings-scroll" ref={scrollRef}>
         {offerings.map((item) => (
           <Link key={item.to} to={item.to} className="offerings-scroll-card">
             <article className="feature-card">
               {item.imageUrl && <img src={item.imageUrl} alt={`${item.title} visual`} className="feature-image" />}
               <h3>{item.title}</h3>
-              {item.description && <p>{item.description}</p>}
               <span className="learn-more-btn">Learn More</span>
             </article>
           </Link>
         ))}
       </div>
-      <button className="scroll-arrow" onClick={() => scroll("right")} aria-label="Scroll right">&#8250;</button>
+      <button className="scroll-arrow" onClick={() => scroll("right")} aria-label="Scroll right">
+        <svg className="scroll-arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+        </svg>
+      </button>
     </div>
   );
 }
@@ -267,31 +297,23 @@ function HomePage() {
               </Link>
             </div>
           </div>
-          <img src={homeHero.imageUrl} alt="Nyalazone hero" className="hero-image" />
         </div>
       </section>
 
-      <section className="section section-tight">
-        <div className="container">
-          <div className="flagship-banner">
-            <h2>Our Flagship Products</h2>
-            <div className="flagship-row">
-              {products.map((item) => (
-                <Link key={`flagship-${item.title}`} to={item.to} className="flagship-item">
-                  {item.logoUrl ? (
-                    <img src={item.logoUrl} alt={`${item.title} logo`} className="flagship-logo" />
-                  ) : (
-                    <span className="flagship-fallback">{item.title}</span>
-                  )}
-                </Link>
-              ))}
-            </div>
+      <Section title="Our Flagship Products">
+        <div className="flagship-banner">
+          <div className="flagship-row">
+            {products.map((item) => (
+              <Link key={`flagship-${item.title}`} to={item.to} className="flagship-item">
+                {item.logoUrl ? (
+                  <img src={item.logoUrl} alt={`${item.title} logo`} className="flagship-logo product-logo-blend" />
+                ) : (
+                  <span className="flagship-fallback">{item.title}</span>
+                )}
+              </Link>
+            ))}
           </div>
         </div>
-      </section>
-
-      <Section title="Our Offerings" className="section-vivid">
-        <OfferingsScroll />
       </Section>
 
       <Section title={whyNyalazone.title} className="section-why">
@@ -305,7 +327,77 @@ function HomePage() {
           ))}
         </div>
       </Section>
+
+      <Section title="Our Offerings" className="section-vivid">
+        <OfferingsScroll />
+      </Section>
+
+      <HomeEmailCapture />
     </>
+  );
+}
+
+function HomeEmailCapture() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/info@nyalazone.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "New Interest Submission",
+          _template: "table",
+          _captcha: "false",
+          email,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+      setEmail("");
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <section className="home-capture-section">
+      <div className="container home-capture-inner">
+        <div className="home-capture-text">
+          <p className="home-capture-eyebrow">Stay Connected</p>
+          <h2 className="home-capture-heading">Interested in learning more about Nyalazone?</h2>
+          <p className="home-capture-sub">Leave your work email and we'll be in touch.</p>
+        </div>
+        <div className="home-capture-form-wrap">
+          {submitted ? (
+            <p className="home-capture-thanks">Thanks — we'll be in touch soon.</p>
+          ) : (
+            <form className="home-capture-form" onSubmit={handleSubmit}>
+              <input
+                className="home-capture-input"
+                type="email"
+                placeholder="you@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <button className="home-capture-btn" type="submit" disabled={submitting}>
+                {submitting ? "Submitting…" : "Get in Touch"}
+              </button>
+              {error && <p className="home-capture-error">{error}</p>}
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -315,23 +407,20 @@ function ProductsQuadrantPage() {
       <p className="lead detail-copy">{productsIntro}</p>
       <div className="products-quadrant">
         {products.map((item) => (
-          <article
-            key={`quadrant-${item.title}`}
-            className="quadrant-sector"
-          >
-            <div className="quadrant-logo-wrap">
-              {item.logoUrl ? (
-                <img src={item.logoUrl} alt={`${item.title} logo`} className="quadrant-logo" />
-              ) : (
-                <div className="image-placeholder small">Image Placeholder</div>
-              )}
-            </div>
-            <h3>{item.title}</h3>
-            {item.description && <p>{item.description}</p>}
-            <Link to={item.to} className="learn-more-btn">
-              Learn More
-            </Link>
-          </article>
+          <Link key={`quadrant-${item.title}`} to={item.to} className="quadrant-link">
+            <article className="quadrant-sector">
+              <div className="quadrant-logo-wrap">
+                {item.logoUrl ? (
+                  <img src={item.logoUrl} alt={`${item.title} logo`} className="quadrant-logo product-logo-blend" />
+                ) : (
+                  <div className="image-placeholder small">Image Placeholder</div>
+                )}
+              </div>
+              <h3>{item.title}</h3>
+              {item.description && <p>{item.description}</p>}
+              <span className="learn-more-btn">Learn More</span>
+            </article>
+          </Link>
         ))}
       </div>
     </Section>
@@ -344,12 +433,14 @@ function CollectionPage({
   items,
   className,
   boldDescription,
+  navGroups,
 }: {
   title: string;
   intro: string;
   items: { title: string; description?: string; to: string; imageUrl?: string }[];
   className?: string;
   boldDescription?: boolean;
+  navGroups?: { title: string; to: string }[][];
 }) {
   return (
     <Section title={title} className={className}>
@@ -370,53 +461,232 @@ function CollectionPage({
           </Link>
         ))}
       </div>
+      {navGroups && <PageNav groups={navGroups} />}
     </Section>
+  );
+}
+
+function linkifyEmails(text: string, keyPrefix: string) {
+  const parts = text.split(/([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g);
+  if (parts.length === 1) return text;
+
+  return parts.map((part, i) => {
+    const isEmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(part);
+    if (!isEmail) return part;
+    return (
+      <a key={`${keyPrefix}-${i}`} href={`mailto:${part}`} className="inline-link">
+        {part}
+      </a>
+    );
+  });
+}
+
+function renderRichText(text: string) {
+  const parts = text.split(/\*\*(.*?)\*\*/);
+  if (parts.length === 1) return linkifyEmails(text, "plain");
+
+  return parts.map((part, i) => {
+    const content = linkifyEmails(part, `part-${i}`);
+    if (i % 2 === 1) return <strong key={`bold-${i}`}>{content}</strong>;
+    return <Fragment key={`text-${i}`}>{content}</Fragment>;
+  });
+}
+
+
+function AnimatedTagline({ text }: { text: string }) {
+  const phrases = text.split(". ").map((p) => (p.endsWith(".") ? p : `${p}.`));
+  return (
+    <div className="animated-tagline">
+      {phrases.map((phrase, i) => (
+        <span
+          key={phrase}
+          className="tagline-phrase"
+          style={{ animationDelay: `${i * 0.55}s` }}
+        >
+          {phrase}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function PageContent({ page }: { page: TextPage }) {
+  const hasImages = (page.paragraphImages?.length ?? 0) > 0;
+
+  const paragraphNodes = page.paragraphs?.map((paragraph, index) => {
+    if (page.animatedTagline && index === 0) {
+      return <AnimatedTagline key={paragraph} text={paragraph} />;
+    }
+    if (page.pulsingTagline && index === 0) {
+      return (
+        <Fragment key={paragraph}>
+          <AnimatedTagline text={page.pulsingTagline} />
+          <p className="lead detail-copy">{renderRichText(paragraph)}</p>
+        </Fragment>
+      );
+    }
+    const isLead = page.boldFirstParagraph && index === 0;
+    const className = `lead detail-copy${isLead ? " detail-copy-leadline" : ""}`;
+    return <p key={paragraph} className={className}>{renderRichText(paragraph)}</p>;
+  });
+
+  const bulletNodes = page.bullets && (
+    <ul className="bullet-list">
+      {page.bullets.map((point) => (
+        <li key={point}>{renderRichText(point)}</li>
+      ))}
+    </ul>
+  );
+
+  return (
+    <div className={page.contentClassName ?? ""}>
+      {hasImages ? (
+        <div className={`para-columns${page.paragraphImageClassName ? ` ${page.paragraphImageClassName}` : ""}`}>
+          <div className="para-col-text">
+            {paragraphNodes}
+            {bulletNodes}
+          </div>
+          <div className="para-col-images">
+            {page.paragraphImages!.map((img) => (
+              <img key={img} src={img} alt="" className="para-col-img" />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <>
+          {paragraphNodes}
+          {bulletNodes}
+        </>
+      )}
+      {page.sections && (
+        <div className="section-list-grid">
+          {page.sections.map((section) => (
+            <div key={section.heading}>
+              <h3>{section.heading}</h3>
+              <ul className="bullet-list">
+                {section.bullets.map((b) => <li key={b}>{renderRichText(b)}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+      {page.trailingParagraphs?.map((paragraph) => (
+        <p key={paragraph} className="lead detail-copy">{renderRichText(paragraph)}</p>
+      ))}
+    </div>
+  );
+}
+
+function PageNav({ groups }: { groups: { title: string; to: string }[][] }) {
+  const location = useLocation();
+  const items = groups.find((g) => g.some((p) => p.to === location.pathname));
+  if (!items) return null;
+  const index = items.findIndex((p) => p.to === location.pathname);
+  const prev = items[index - 1];
+  const next = items[index + 1];
+  return (
+    <div className="page-nav">
+      {prev ? (
+        <Link to={prev.to} className="page-nav-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          <span className="page-nav-label"><span className="page-nav-hint">Previous</span><span className="page-nav-title">{prev.title}</span></span>
+        </Link>
+      ) : <span />}
+      {next ? (
+        <Link to={next.to} className="page-nav-btn page-nav-btn-next">
+          <span className="page-nav-label"><span className="page-nav-hint">Next</span><span className="page-nav-title">{next.title}</span></span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+        </Link>
+      ) : <span />}
+    </div>
   );
 }
 
 function TextPageView({ page }: { page: TextPage }) {
-  const titleNode = page.headerLogoUrl ? (
-    <img src={page.headerLogoUrl} alt={page.title} className="section-header-logo" />
-  ) : undefined;
-
-  const textContent = (
-    <>
-      {page.paragraphs?.map((paragraph, index) => (
-        <p
-          key={paragraph}
-          className={`lead detail-copy${page.boldFirstParagraph && index === 0 ? " detail-copy-leadline" : ""}`}
-        >
-          {paragraph}
-        </p>
-      ))}
-      {page.bullets && (
-        <ul className="bullet-list">
-          {page.bullets.map((point) => (
-            <li key={point}>{point}</li>
-          ))}
-        </ul>
-      )}
-    </>
-  );
+  const titleNode = page.headerLogoUrl
+    ? <img src={page.headerLogoUrl} alt={page.title} className="section-header-logo" />
+    : page.logoUrl
+    ? (
+      <div className="product-title-block">
+        <img src={page.logoUrl} alt={`${page.title} logo`} className="product-title-logo product-logo-blend" />
+        <div className="product-title-sep" aria-hidden="true" />
+        <h2 className="product-title-text">{page.title}</h2>
+      </div>
+    )
+    : undefined;
 
   return (
     <Section title={page.title} titleNode={titleNode}>
+      {page.highlights && (
+        <div className="highlights-bar">
+          {page.highlights.map((h) => (
+            <div key={h.label} className="highlight-item">
+              <span className="highlight-value">{h.value}</span>
+              <span className="highlight-label">{h.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
       {page.imageUrl ? (
         <div className="text-image-row">
-          <div className="text-image-text">{textContent}</div>
-          <img src={page.imageUrl} alt={`${page.title} visual`} className="detail-image real-image text-image-img" />
+          <div className="text-image-text"><PageContent page={page} /></div>
+          <img src={page.imageUrl} alt={`${page.title} visual`} className="text-image-img" />
         </div>
       ) : (
-        textContent
+        <PageContent page={page} />
       )}
+      <PageNav groups={[products, offerings, partnerPages, aboutPages]} />
     </Section>
   );
 }
 
-function TeamCard({ member }: { member: { name: string; role: string; imageUrl: string; paragraphs: string[]; to?: string } }) {
-  const card = (
-    <article className={`team-card${member.to ? " team-card-clickable" : ""}`}>
-      <img src={member.imageUrl} alt={member.name} className="team-image" />
+function LinkedInIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </svg>
+  );
+}
+
+function TeamCard({ member }: { member: { name: string; role: string; imageUrl: string; paragraphs: string[]; to?: string; linkedinUrl?: string } }) {
+  const navigate = useNavigate();
+  const isCardClickable = Boolean(member.to);
+
+  function openMemberPage() {
+    if (member.to) navigate(member.to);
+  }
+
+  return (
+    <article
+      className={`team-card${isCardClickable ? " team-card-clickable" : ""}`}
+      onClick={isCardClickable ? openMemberPage : undefined}
+      onKeyDown={
+        isCardClickable
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openMemberPage();
+              }
+            }
+          : undefined
+      }
+      role={isCardClickable ? "link" : undefined}
+      tabIndex={isCardClickable ? 0 : undefined}
+    >
+      {member.linkedinUrl ? (
+        <a
+          href={member.linkedinUrl}
+          className="team-image-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          aria-label={`${member.name} on LinkedIn`}
+        >
+          <img src={member.imageUrl} alt={member.name} className="team-image" />
+        </a>
+      ) : (
+        <img src={member.imageUrl} alt={member.name} className="team-image" />
+      )}
       <h4>{member.name}</h4>
       <p className="team-role">{member.role}</p>
       {member.paragraphs.map((paragraph) => (
@@ -424,11 +694,21 @@ function TeamCard({ member }: { member: { name: string; role: string; imageUrl: 
           {paragraph}
         </p>
       ))}
+      {member.linkedinUrl && (
+        <a
+          href={member.linkedinUrl}
+          className="team-linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          aria-label={`${member.name} on LinkedIn`}
+        >
+          <LinkedInIcon />
+          LinkedIn
+        </a>
+      )}
     </article>
   );
-  return member.to ? (
-    <Link to={member.to} className="team-card-anchor">{card}</Link>
-  ) : card;
 }
 
 function TeamPageView() {
@@ -443,27 +723,185 @@ function TeamPageView() {
         </p>
       ))}
 
-      <h3 className="team-subtitle">Global Presence</h3>
-      <p className="lead detail-copy">{teamGlobalPresence}</p>
+      <p className="lead detail-copy">{renderRichText(teamGlobalPresence)}</p>
       <div className="team-grid">
         {globalTeamMembers.map((member) => <TeamCard key={member.name} member={member} />)}
       </div>
+      <PageNav groups={[aboutPages]} />
     </Section>
   );
 }
 
-function TeamMemberDetailView({ member }: { member: { name: string; role: string; imageUrl: string; paragraphs: string[] } }) {
+function TeamMemberDetailView({ member }: { member: { name: string; role: string; imageUrl: string; paragraphs: string[]; linkedinUrl?: string } }) {
   return (
     <Section title={member.name}>
       <div className="team-detail-header">
-        <img src={member.imageUrl} alt={member.name} className="team-detail-image" />
+        {member.linkedinUrl ? (
+          <a
+            href={member.linkedinUrl}
+            className="team-detail-image-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${member.name} on LinkedIn`}
+          >
+            <img src={member.imageUrl} alt={member.name} className="team-detail-image" />
+          </a>
+        ) : (
+          <img src={member.imageUrl} alt={member.name} className="team-detail-image" />
+        )}
         <div>
           <p className="team-detail-role">{member.role}</p>
           {member.paragraphs.map((p) => (
             <p key={p} className="lead detail-copy">{p}</p>
           ))}
+          {member.linkedinUrl && (
+            <a
+              href={member.linkedinUrl}
+              className="team-detail-linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkedInIcon />
+              View on LinkedIn
+            </a>
+          )}
         </div>
       </div>
+    </Section>
+  );
+}
+
+const EMPTY_FORM = { name: "", email: "", role: "", message: "" };
+
+function CareersPageView() {
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitError(null);
+    setSubmitting(true);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/recruit@nyalazone.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "New Careers Interest Submission",
+          _template: "table",
+          _captcha: "false",
+          name: form.name,
+          email: form.email,
+          role: form.role || "Not provided",
+          message: form.message || "No message provided",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to submit form");
+      }
+
+      setForm(EMPTY_FORM);
+      setSubmitted(true);
+    } catch {
+      setSubmitError("We could not submit your request right now. Please email recruit@nyalazone.com directly.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <Section title={careersPage.title}>
+      <PageContent page={careersPage} />
+      <div className="careers-form-wrap">
+        <h3>Express Your Interest</h3>
+        {submitted ? (
+          <p className="lead detail-copy">Thanks for reaching out - we'll be in touch!</p>
+        ) : (
+          <form className="careers-form" onSubmit={handleSubmit}>
+            <div className="form-field">
+              <label className="form-label" htmlFor="careers-name">Name</label>
+              <input id="careers-name" className="form-input" type="text" name="name" value={form.name} onChange={handleChange} required />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="careers-email">Email</label>
+              <input id="careers-email" className="form-input" type="email" name="email" value={form.email} onChange={handleChange} required />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="careers-role">Role of Interest</label>
+              <input id="careers-role" className="form-input" type="text" name="role" value={form.role} onChange={handleChange} />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="careers-message">Why Nyalazone?</label>
+              <textarea id="careers-message" className="form-textarea" name="message" value={form.message} onChange={handleChange} rows={5} />
+            </div>
+            {submitError && <p className="lead detail-copy">{submitError}</p>}
+            <button type="submit" className="button button-primary" disabled={submitting}>
+              {submitting ? "Submitting..." : "Submit"}
+            </button>
+          </form>
+        )}
+      </div>
+    </Section>
+  );
+}
+
+function CopyLinkButton({ url }: { url: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy() {
+    await navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  return (
+    <button className="resource-copy-btn" onClick={handleCopy} aria-label="Copy video link">
+      {copied ? (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      ) : (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+      )}
+      {copied ? "Copied!" : "Shareable Link"}
+    </button>
+  );
+}
+
+function ResourcesPageView() {
+  return (
+    <Section title="Resources">
+      <p className="lead detail-copy">{resourcesIntro}</p>
+      <div className="resources-grid">
+        {(resources as ResourceItem[]).map((item) => (
+          <article key={item.title} className="resource-card">
+            <div className="resource-video-wrap">
+              <video
+                src={item.videoUrl}
+                controls
+                preload="metadata"
+                className="resource-video"
+                aria-label={item.title}
+              />
+            </div>
+            <div className="resource-card-body">
+              <h3 className="resource-headline">{item.title}</h3>
+              <p className="resource-subheadline">{item.headline}</p>
+              <p className="resource-desc">{item.description}</p>
+              <CopyLinkButton url={item.videoUrl} />
+            </div>
+          </article>
+        ))}
+      </div>
+      <PageNav groups={[aboutPages]} />
     </Section>
   );
 }
@@ -476,6 +914,9 @@ function ContactPageView() {
           {p}
         </p>
       ))}
+      <p className="lead detail-copy">
+        Email: <a href="mailto:info@nyalazone.com" className="inline-link">info@nyalazone.com</a>
+      </p>
       <div className="contact-offices-grid">
         {contactOffices.map((office) => (
           <div key={office.country} className="contact-office-card">
@@ -485,7 +926,6 @@ function ContactPageView() {
             <h3 className="contact-country">{office.country}</h3>
             <p className="contact-detail">{office.address}</p>
             <p className="contact-detail">Tel: {office.phone}</p>
-            <p className="contact-detail">{office.email}</p>
           </div>
         ))}
       </div>
@@ -496,19 +936,27 @@ function ContactPageView() {
 function Section({
   title,
   titleNode,
+  action,
   children,
   className = "section-vivid",
 }: {
   title: string;
   titleNode?: ReactNode;
+  action?: ReactNode;
   children: ReactNode;
   className?: string;
 }) {
+  const heading = titleNode ?? <h2>{title}</h2>;
   return (
     <section className={`section ${className}`}>
       <div className="container">
         <div className="section-head">
-          {titleNode ?? <h2>{title}</h2>}
+          {action ? (
+            <div className="section-head-row">
+              {heading}
+              {action}
+            </div>
+          ) : heading}
         </div>
         {children}
       </div>
@@ -548,8 +996,17 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <div className="container">
+        <div className="container footer-bottom-row">
           <p>© {new Date().getFullYear()} Nyalazone Solutions Pvt. Ltd., All Rights Reserved</p>
+          <a
+            href="https://www.linkedin.com/company/nyalazone-solutions-pvt-ltd-/?originalSubdomain=in"
+            className="footer-linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Nyalazone on LinkedIn"
+          >
+            <LinkedInIcon />
+          </a>
         </div>
       </div>
     </footer>
@@ -557,3 +1014,7 @@ function Footer() {
 }
 
 export default App;
+
+
+
+

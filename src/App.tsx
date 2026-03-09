@@ -793,16 +793,10 @@ function CareersPageView() {
     }
   }
 
-  const [firstPara, ...restParas] = careersPage.paragraphs ?? [];
-  const leftPage = { ...careersPage, paragraphs: restParas, boldFirstParagraph: false };
+  const leftPage = { ...careersPage };
 
   return (
     <Section title={careersPage.title}>
-      {firstPara && (
-        <p className={`lead detail-copy${careersPage.boldFirstParagraph ? " detail-copy-leadline" : ""}`}>
-          {renderRichText(firstPara)}
-        </p>
-      )}
       <div className="careers-layout">
         <div><PageContent page={leftPage} /></div>
         <div className="careers-form-wrap">

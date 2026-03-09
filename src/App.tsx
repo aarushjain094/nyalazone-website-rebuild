@@ -621,7 +621,8 @@ function TextPageView({ page }: { page: TextPage }) {
       <div className="product-title-block">
         <img src={page.logoUrl} alt={`${page.title} logo`} className="product-title-logo product-logo-blend" />
         <div className="product-title-sep" aria-hidden="true" />
-        <h2 className="product-title-text">{page.title}</h2>
+        <h2 className="product-title-text product-title-desktop">{page.title}</h2>
+        {page.mobileTitle && <h2 className="product-title-text product-title-mobile">{page.mobileTitle}</h2>}
       </div>
     )
     : undefined;

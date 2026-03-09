@@ -14,6 +14,7 @@ export type CardItem = {
 
 export type TextPage = {
   title: string;
+  mobileTitle?: string;
   highlights?: { value: string; label: string }[];
   paragraphs?: string[];
   bullets?: string[];
@@ -507,6 +508,7 @@ export const detailPages: Record<string, TextPage> = {
   },
   "/leggero-data-management-analytics-platform": {
     title: "Leggero Data Management and Analytics Platform",
+    mobileTitle: "Leggero DMAP",
     highlights: [
       { value: "Multi-TB", label: "Data Scale" },
       { value: "Cloud & On-Prem", label: "Flexible Deployment" },
@@ -531,6 +533,7 @@ export const detailPages: Record<string, TextPage> = {
   },
   "/leggero-dynamic-data-source": {
     title: "Leggero Dynamic Data Source",
+    mobileTitle: "Leggero DDS",
     highlights: [
       { value: "Real-Time", label: "Data Integration" },
       { value: "AI-Ready", label: "Architecture" },
@@ -560,6 +563,7 @@ export const detailPages: Record<string, TextPage> = {
   },
   "/digital-customer-engagement-platform": {
     title: "Digital Customer Engagement Platform",
+    mobileTitle: "Leggero DCE",
     highlights: [
       { value: "Omnichannel", label: "Web, Mobile, Email, SMS, WhatsApp" },
       { value: "AI-Powered", label: "Workflow Engine" },

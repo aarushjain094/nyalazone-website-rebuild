@@ -744,42 +744,23 @@ h3 {
 }
 
 @media (max-width: 768px) {
-  /* Offerings: alternating text/image rows */
+  /* Offerings: single column, no images */
   .offerings-section .card-grid {
     grid-template-columns: 1fr;
     gap: var(--space-3);
   }
 
   .offerings-section .feature-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    flex-direction: unset;
+    flex-direction: row;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-3);
   }
 
   .offerings-section .feature-card .feature-image {
-    grid-column: 2;
-    grid-row: 1;
-    width: 100%;
-    height: 120px;
-    margin: 0;
-    border-radius: 8px;
-    object-fit: cover;
+    display: none;
   }
 
   .offerings-section .feature-card .feature-card-body {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .offerings-section .feature-card-link:nth-child(even) .feature-image {
-    grid-column: 1;
-  }
-
-  .offerings-section .feature-card-link:nth-child(even) .feature-card-body {
-    grid-column: 2;
+    flex: 1;
   }
 
   /* Products: alternating text/image rows */
@@ -1182,6 +1163,20 @@ h3 {
 
 .product-title-text {
   margin: 0;
+}
+
+.product-title-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .product-title-desktop {
+    display: none;
+  }
+
+  .product-title-mobile {
+    display: block;
+  }
 }
 
 .para-columns {

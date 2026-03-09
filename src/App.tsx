@@ -826,10 +826,24 @@ function CareersPageView() {
     }
   }
 
+  const [firstPara, ...restParas] = careersPage.paragraphs ?? [];
+
   return (
     <Section title={careersPage.title}>
+      {firstPara && (
+        <p className="lead detail-copy detail-copy-leadline">{renderRichText(firstPara)}</p>
+      )}
       <div className="careers-layout">
-        <div><PageContent page={careersPage} /></div>
+        <div>
+          {restParas.map((p) => (
+            <p key={p} className="lead detail-copy">{renderRichText(p)}</p>
+          ))}
+          {careersPage.bullets && (
+            <ul className="bullet-list">
+              {careersPage.bullets.map((b) => <li key={b}>{renderRichText(b)}</li>)}
+            </ul>
+          )}
+        </div>
         <div className="careers-form-wrap">
         <h3>Express Your Interest</h3>
         {submitted ? (

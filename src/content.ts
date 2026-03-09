@@ -136,14 +136,14 @@ export const capabilityCards = [
       "Future-proof your business with AI-powered systems, integrated data management, and customer engagement solutions that deliver impactful and measurable outcomes.",
   },
   {
-    title: "Data Management",
+    title: "Flexible Customization",
     description:
-      "Empower your enterprise with robust data architecture, seamless migrations, and advanced analytics to ensure data quality, accessibility, and strategic value.",
+      "Our platforms are built to adapt — configurable workflows, modular architecture, and extensible APIs ensure every solution fits your organization's unique requirements.",
   },
   {
-    title: "Consulting Services",
+    title: "Enterprise-Grade Solutions",
     description:
-      "Partner with our experts to navigate digital transformation and operational optimization through strategic assessments, tailored roadmaps, and implementation support.",
+      "Designed for scale, security, and reliability, our products meet the demands of complex enterprise environments — from multi-TB data workloads to mission-critical engagement systems.",
   },
 ];
 

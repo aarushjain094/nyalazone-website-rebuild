@@ -491,6 +491,11 @@ h3 {
   box-shadow: 0 20px 48px rgba(10, 41, 73, 0.14);
 }
 
+.quadrant-text {
+  display: flex;
+  flex-direction: column;
+}
+
 .quadrant-logo-wrap {
   min-height: 160px;
   display: grid;
@@ -739,15 +744,75 @@ h3 {
 }
 
 @media (max-width: 768px) {
+  /* Offerings: alternating text/image rows */
   .offerings-section .card-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-3);
   }
-}
 
-@media (max-width: 640px) {
-  .offerings-section .card-grid .feature-image {
-    width: 80px;
-    height: 80px;
+  .offerings-section .feature-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: unset;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+
+  .offerings-section .feature-card .feature-image {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: 120px;
+    margin: 0;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .offerings-section .feature-card .feature-card-body {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .offerings-section .feature-card-link:nth-child(even) .feature-image {
+    grid-column: 1;
+  }
+
+  .offerings-section .feature-card-link:nth-child(even) .feature-card-body {
+    grid-column: 2;
+  }
+
+  /* Products: alternating text/image rows */
+  .products-quadrant {
+    grid-template-columns: 1fr;
+  }
+
+  .quadrant-sector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+
+  .quadrant-logo-wrap {
+    grid-column: 2;
+    grid-row: 1;
+    min-height: unset;
+    height: 100px;
+  }
+
+  .quadrant-text {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .quadrant-link:nth-child(even) .quadrant-logo-wrap {
+    grid-column: 1;
+  }
+
+  .quadrant-link:nth-child(even) .quadrant-text {
+    grid-column: 2;
   }
 }
 
@@ -1651,8 +1716,7 @@ textarea:focus-visible,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .flagship-row,
-  .products-quadrant {
+  .flagship-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1685,8 +1749,7 @@ textarea:focus-visible,
     display: none;
   }
 
-  .flagship-row,
-  .products-quadrant {
+  .flagship-row {
     grid-template-columns: 1fr;
   }
 

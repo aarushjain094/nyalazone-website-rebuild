@@ -423,9 +423,11 @@ function ProductsQuadrantPage() {
                   <div className="image-placeholder small">Image Placeholder</div>
                 )}
               </div>
-              <h3>{item.title}</h3>
-              {item.description && <p>{item.description}</p>}
-              <span className="learn-more-btn">Learn More</span>
+              <div className="quadrant-text">
+                <h3>{item.title}</h3>
+                {item.description && <p>{item.description}</p>}
+                <span className="learn-more-btn">Learn More</span>
+              </div>
             </article>
           </Link>
         ))}

@@ -547,17 +547,14 @@ h3 {
 
 .section-why .card-grid .feature-card:nth-child(1) {
   background: linear-gradient(160deg, #ffffff 0%, #f0f8ff 100%);
-  border-top-color: #7ec8f5;
 }
 
 .section-why .card-grid .feature-card:nth-child(2) {
   background: linear-gradient(160deg, #f5faff 0%, #ddeeff 100%);
-  border-top-color: #2086dc;
 }
 
 .section-why .card-grid .feature-card:nth-child(3) {
   background: linear-gradient(160deg, #eaf4ff 0%, #cce3f8 100%);
-  border-top-color: #0c49a2;
 }
 
 .feature-image {

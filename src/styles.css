@@ -379,21 +379,33 @@ p {
   height: 100%;
 }
 
-/* Positions: container 220×220, center (110,110), icon half=22px */
-/* Lock: θ=40°,  r=56  → top:44, left:124 */
-.orbit-icon-1 { top: 44px;  left: 124px; animation: orbitFloat 3.5s ease-in-out infinite; }
-/* Gear: θ=130°, r=90  → top:147, left:158 */
-.orbit-icon-2 { top: 147px; left: 158px; animation: orbitFloat 4s ease-in-out infinite 0.9s; }
-/* People: θ=240°, r=90 → top:134, left:8  */
-.orbit-icon-3 { top: 134px; left: 8px;   animation: orbitFloat 3.8s ease-in-out infinite 1.6s; }
+/* Icons centered at origin, orbit via rotation+translate */
+.orbit-icon {
+  top: 50%;
+  left: 50%;
+  margin-top: -22px;
+  margin-left: -22px;
+}
+
+/* Lock: inner ring r=56, starts at 40° */
+.orbit-icon-1 { animation: orbit-inner 18s linear infinite; }
+/* Gear: outer ring r=90, starts at 130° */
+.orbit-icon-2 { animation: orbit-outer 24s linear infinite; }
+/* People: outer ring r=90, starts at 240° */
+.orbit-icon-3 { animation: orbit-outer 24s linear infinite reverse; animation-delay: -8s; }
+
+@keyframes orbit-inner {
+  from { transform: rotate(40deg)  translateX(56px) rotate(-40deg); }
+  to   { transform: rotate(400deg) translateX(56px) rotate(-400deg); }
+}
+
+@keyframes orbit-outer {
+  from { transform: rotate(130deg)  translateX(90px) rotate(-130deg); }
+  to   { transform: rotate(490deg)  translateX(90px) rotate(-490deg); }
+}
 
 .orbit-gear-svg {
   animation: spinGear 7s linear infinite;
-}
-
-@keyframes orbitFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-7px); }
 }
 
 @keyframes spinGear {

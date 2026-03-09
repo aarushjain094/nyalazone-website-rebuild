@@ -68,9 +68,16 @@ import {
   type TextPage,
 } from "./content";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <div className="site-shell">
+      <ScrollToTop />
       <Header />
       <main className="page-wrap">
         <BreadcrumbBar />

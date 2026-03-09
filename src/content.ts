@@ -410,7 +410,6 @@ export const careersPage: TextPage = {
     "Elegant code (and maybe some chaos, let's be real)",
     "Building things that don't feel like work to use",
     "People who ask \"what if we tried it this way?\"",
-    "Slide into our inbox: recruit@nyalazone.com",
   ],
   imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Careers-852x1024.png",
   boldFirstParagraph: true,

@@ -807,14 +807,14 @@ h3 {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 1.4rem;
+  gap: clamp(0.5rem, 2vw, 1.4rem);
   margin-bottom: var(--space-4);
   overflow: hidden;
 }
 
 .tagline-phrase {
   white-space: nowrap;
-  font-size: clamp(0.85rem, 1.3vw, 1.15rem);
+  font-size: clamp(0.7rem, 2.2vw, 1.15rem);
   font-weight: 700;
   background: linear-gradient(90deg, var(--blue) 0%, var(--primary) 100%);
   -webkit-background-clip: text;

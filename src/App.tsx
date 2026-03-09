@@ -285,18 +285,56 @@ function OfferingsScroll() {
 
 function HeroOrbitAnimation() {
   const logoUrl = "https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png";
+  const icon1Ref = useRef<HTMLDivElement>(null);
+  const icon2Ref = useRef<HTMLDivElement>(null);
+  const icon3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let a1 = 40, a2 = 130, a3 = 260;
+    const r1 = 56, r2 = 90, r3 = 90;
+    let v1 = 0.35, v2 = 0.25, v3 = -0.25;
+    let rafId: number;
+
+    function tick() {
+      a1 += v1;
+      a2 += v2;
+      a3 += v3;
+
+      // Collision between icons 2 & 3 on the outer ring
+      let diff = ((a2 - a3) % 360 + 360) % 360;
+      if (diff > 180) diff -= 360;
+      if (Math.abs(diff) < 22) {
+        const tmp = v2; v2 = v3; v3 = tmp;
+        a2 += v2 * 4;
+        a3 += v3 * 4;
+      }
+
+      const apply = (el: HTMLDivElement | null, a: number, r: number) => {
+        if (el) el.style.transform = `rotate(${a}deg) translateX(${r}px) rotate(${-a}deg)`;
+      };
+      apply(icon1Ref.current, a1, r1);
+      apply(icon2Ref.current, a2, r2);
+      apply(icon3Ref.current, a3, r3);
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
   return (
     <div className="hero-orbit-column" aria-hidden="true">
       <div className="hero-orbit-wrap">
         <svg className="orbit-rings-svg" viewBox="0 0 220 220" fill="none">
-          <circle cx="110" cy="110" r="56"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
-          <circle cx="110" cy="110" r="90"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
+          <circle cx="110" cy="110" r="56" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="5 5"/>
+          <circle cx="110" cy="110" r="90" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="5 5"/>
         </svg>
         <div className="orbit-center">
           <img src={logoUrl} alt="" className="orbit-center-logo"/>
         </div>
-        {/* Unlocked lock — inner ring, top-right */}
-        <div className="orbit-icon orbit-icon-1">
+        {/* Unlocked lock — inner ring */}
+        <div className="orbit-icon" ref={icon1Ref}>
           <div className="orbit-icon-card">
             <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2"/>
@@ -304,8 +342,8 @@ function HeroOrbitAnimation() {
             </svg>
           </div>
         </div>
-        {/* Gear — middle ring, bottom-right */}
-        <div className="orbit-icon orbit-icon-2">
+        {/* Gear — outer ring */}
+        <div className="orbit-icon" ref={icon2Ref}>
           <div className="orbit-icon-card">
             <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="orbit-gear-svg">
               <circle cx="12" cy="12" r="3"/>
@@ -313,8 +351,8 @@ function HeroOrbitAnimation() {
             </svg>
           </div>
         </div>
-        {/* People — outer ring, bottom-left */}
-        <div className="orbit-icon orbit-icon-3">
+        {/* People — outer ring */}
+        <div className="orbit-icon" ref={icon3Ref}>
           <div className="orbit-icon-card">
             <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>

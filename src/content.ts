@@ -98,7 +98,7 @@ export const homeHero = {
   eyebrow: "Leading provider of digital transformation and data management solutions",
   title: "Elevate Your Enterprise & Deliver AI-enabled Transformation",
   subtitle:
-    "Nyalazone is a technology-first company with products that drive digital transformation across industries. We focus on innovation, research and engineering excellence to create custom solutions to empower organizations to streamline operations, enhance stakeholder engagement, and unlock the full potential of their data.",
+    "Nyalazone is a technology-first company with products that drive digital transformation across industries. We focus on innovation, research and engineering excellence to create custom AI-powered solutions that increase efficiency within your organization.",
   imageUrl: "https://nyalazone.ai/wp-content/uploads/2021/11/Rev-slider-img-1.jpg",
 };
 
@@ -126,7 +126,7 @@ export const homeHighlights: CardItem[] = [
 export const whyNyalazone = {
   title: "Why Nyalazone?",
   paragraph:
-    "Nyalazone is a technology-first company with products that drive digital transformation across industries. We focus on innovation, research and engineering excellence to create custom solutions to empower organizations to streamline operations, enhance stakeholder engagement, and unlock the full potential of their data.",
+    "Nyalazone is a technology-first company with products that drive digital transformation across industries. We focus on innovation, research and engineering excellence to create custom AI-powered solutions that increase efficiency within your organization.",
 };
 
 export const capabilityCards = [

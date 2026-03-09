@@ -828,8 +828,9 @@ function CareersPageView() {
 
   return (
     <Section title={careersPage.title}>
-      <PageContent page={careersPage} />
-      <div className="careers-form-wrap">
+      <div className="careers-layout">
+        <div><PageContent page={careersPage} /></div>
+        <div className="careers-form-wrap">
         <h3>Express Your Interest</h3>
         {submitted ? (
           <p className="lead detail-copy">Thanks for reaching out - we'll be in touch!</p>
@@ -857,6 +858,7 @@ function CareersPageView() {
             </button>
           </form>
         )}
+        </div>
       </div>
     </Section>
   );

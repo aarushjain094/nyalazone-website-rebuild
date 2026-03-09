@@ -425,7 +425,7 @@ h3 {
 }
 
 .flagship-item {
-  background: #eaf2fb;
+  background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 12px;
   min-height: 118px;
@@ -1161,25 +1161,37 @@ h3 {
   }
 }
 
+.careers-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
 .careers-form-wrap {
-  margin-top: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-4));
 }
 
 .careers-form-wrap h3 {
   margin-bottom: var(--space-3);
+  font-size: 1.4rem;
 }
 
 .careers-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  max-width: 540px;
-  width: 100%;
-  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .careers-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .careers-form-wrap {
+    position: static;
+  }
 }
 
 .form-field {

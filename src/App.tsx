@@ -38,11 +38,8 @@ const breadcrumbMap: Record<string, { label: string; to: string }[]> = {
   "/gen-ai-enabled-process-automation": [{ label: "Offerings", to: "/offerings" }, { label: "Gen-AI Enabled Process Automation", to: "/gen-ai-enabled-process-automation" }],
   "/omnichannel-customer-engagement": [{ label: "Offerings", to: "/offerings" }, { label: "Omnichannel Customer Engagement", to: "/omnichannel-customer-engagement" }],
   "/operations-management-using-activity-orchestration": [{ label: "Offerings", to: "/offerings" }, { label: "Operations Management using Activity Orchestration", to: "/operations-management-using-activity-orchestration" }],
-  "/saurabh-kumar": [{ label: "About Us", to: "/about-us" }, { label: "Our Team", to: "/our-team-2" }, { label: "Saurabh Kumar", to: "/saurabh-kumar" }],
-  "/aneesh-kumar-bhola": [{ label: "About Us", to: "/about-us" }, { label: "Our Team", to: "/our-team-2" }, { label: "Aneesh Kumar Bhola", to: "/aneesh-kumar-bhola" }],
-  "/arnab-sharma": [{ label: "About Us", to: "/about-us" }, { label: "Our Team", to: "/our-team-2" }, { label: "Arnab Sharma", to: "/arnab-sharma" }],
 };
-import { Link, Navigate, NavLink, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import {
   aboutPage,
   capabilityCards,
@@ -96,9 +93,6 @@ function App() {
           <Route path="/contact-us-2" element={<ContactPageView />} />
           <Route path="/our-partner-program" element={<TextPageView page={partnerProgramPage} />} />
           <Route path="/our-professional-certifications" element={<TextPageView page={certificationsPage} />} />
-          {globalTeamMembers.filter((m) => m.to).map((member) => (
-            <Route key={member.to} path={member.to} element={<TeamMemberDetailView member={member} />} />
-          ))}
           {Object.entries(detailPages).map(([path, page]) => (
             <Route key={path} path={normalizePath(path)} element={<TextPageView page={page} />} />
           ))}
@@ -685,37 +679,14 @@ function LinkedInIcon() {
 }
 
 function TeamCard({ member }: { member: { name: string; role: string; imageUrl: string; paragraphs: string[]; to?: string; linkedinUrl?: string } }) {
-  const navigate = useNavigate();
-  const isCardClickable = Boolean(member.to);
-
-  function openMemberPage() {
-    if (member.to) navigate(member.to);
-  }
-
   return (
-    <article
-      className={`team-card${isCardClickable ? " team-card-clickable" : ""}`}
-      onClick={isCardClickable ? openMemberPage : undefined}
-      onKeyDown={
-        isCardClickable
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                openMemberPage();
-              }
-            }
-          : undefined
-      }
-      role={isCardClickable ? "link" : undefined}
-      tabIndex={isCardClickable ? 0 : undefined}
-    >
+    <article className="team-card">
       {member.linkedinUrl ? (
         <a
           href={member.linkedinUrl}
           className="team-image-link"
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
           aria-label={`${member.name} on LinkedIn`}
         >
           <img src={member.imageUrl} alt={member.name} className="team-image" />
@@ -768,44 +739,6 @@ function TeamPageView() {
   );
 }
 
-function TeamMemberDetailView({ member }: { member: { name: string; role: string; imageUrl: string; paragraphs: string[]; linkedinUrl?: string } }) {
-  return (
-    <Section title={member.name}>
-      <div className="team-detail-header">
-        {member.linkedinUrl ? (
-          <a
-            href={member.linkedinUrl}
-            className="team-detail-image-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${member.name} on LinkedIn`}
-          >
-            <img src={member.imageUrl} alt={member.name} className="team-detail-image" />
-          </a>
-        ) : (
-          <img src={member.imageUrl} alt={member.name} className="team-detail-image" />
-        )}
-        <div>
-          <p className="team-detail-role">{member.role}</p>
-          {member.paragraphs.map((p) => (
-            <p key={p} className="lead detail-copy">{p}</p>
-          ))}
-          {member.linkedinUrl && (
-            <a
-              href={member.linkedinUrl}
-              className="team-detail-linkedin"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkedInIcon />
-              View on LinkedIn
-            </a>
-          )}
-        </div>
-      </div>
-    </Section>
-  );
-}
 
 const EMPTY_FORM = { name: "", email: "", role: "", message: "" };
 

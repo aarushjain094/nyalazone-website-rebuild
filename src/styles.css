@@ -438,6 +438,21 @@ h3 {
   border-top: 4px solid var(--blue);
 }
 
+.section-why .card-grid .feature-card:nth-child(1) {
+  background: linear-gradient(145deg, #eef7ff 0%, #d4ecff 100%);
+  border-top-color: #5bb8f5;
+}
+
+.section-why .card-grid .feature-card:nth-child(2) {
+  background: linear-gradient(145deg, #cce4f8 0%, #a8d0f0 100%);
+  border-top-color: #2086dc;
+}
+
+.section-why .card-grid .feature-card:nth-child(3) {
+  background: linear-gradient(145deg, #a8d0f0 0%, #6aaee0 100%);
+  border-top-color: #0c49a2;
+}
+
 .feature-image {
   width: 100%;
   height: 168px;

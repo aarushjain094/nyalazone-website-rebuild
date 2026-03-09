@@ -311,7 +311,7 @@ p {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 3rem;
   align-items: center;
 }
@@ -326,8 +326,8 @@ p {
 
 .hero-orbit-wrap {
   position: relative;
-  width: 320px;
-  height: 320px;
+  width: 260px;
+  height: 260px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -349,7 +349,7 @@ p {
 }
 
 .orbit-center-logo {
-  width: 80px;
+  width: 90px;
   height: auto;
   mix-blend-mode: multiply;
 }
@@ -364,10 +364,14 @@ p {
 .orbit-icon-card {
   width: 44px;
   height: 44px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(10, 41, 73, 0.11);
+  border: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
+  padding: 9px;
 }
 
 .orbit-icon-card svg {
@@ -375,13 +379,13 @@ p {
   height: 100%;
 }
 
-/* Positions: container 320×320, center (160,160), icon half=22px */
-/* Lock: θ=40°,  r=80  → top:77, left:189 */
-.orbit-icon-1 { top: 77px;  left: 189px; animation: orbitFloat 3.5s ease-in-out infinite; }
-/* Gear: θ=140°, r=115 → top:226, left:212 */
-.orbit-icon-2 { top: 226px; left: 212px; animation: orbitFloat 4s ease-in-out infinite 0.9s; }
-/* People: θ=240°, r=148 → top:212, left:10 */
-.orbit-icon-3 { top: 212px; left: 10px;  animation: orbitFloat 3.8s ease-in-out infinite 1.6s; }
+/* Positions: container 260×260, center (130,130), icon half=22px */
+/* Lock: θ=40°,  r=68  → top:54, left:152 */
+.orbit-icon-1 { top: 54px;  left: 152px; animation: orbitFloat 3.5s ease-in-out infinite; }
+/* Gear: θ=130°, r=108 → top:179, left:182 */
+.orbit-icon-2 { top: 179px; left: 182px; animation: orbitFloat 4s ease-in-out infinite 0.9s; }
+/* People: θ=240°, r=108 → top:163, left:15 */
+.orbit-icon-3 { top: 163px; left: 15px;  animation: orbitFloat 3.8s ease-in-out infinite 1.6s; }
 
 .orbit-gear-svg {
   animation: spinGear 7s linear infinite;

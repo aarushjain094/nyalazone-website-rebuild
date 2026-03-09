@@ -643,7 +643,7 @@ function TextPageView({ page }: { page: TextPage }) {
         <img src={page.logoUrl} alt={`${page.title} logo`} className="product-title-logo product-logo-blend" />
         {!page.hideTitleSep && <div className="product-title-sep" aria-hidden="true" />}
         {!page.hideTitleSep && <h2 className="product-title-text product-title-desktop">{page.title}</h2>}
-        {!page.hideTitleSep && page.mobileTitle && <h2 className="product-title-text product-title-mobile">{page.mobileTitle}</h2>}
+        {!page.hideTitleSep && <h2 className="product-title-text product-title-mobile">{page.mobileTitle ?? page.title}</h2>}
       </div>
     )
     : undefined;

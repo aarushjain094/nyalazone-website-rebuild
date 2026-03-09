@@ -1022,9 +1022,6 @@ function Footer() {
   }, []);
   return (
     <footer ref={footerRef} className="site-footer">
-      <div aria-hidden="true" className={`footer-logo-wrap${visible ? " footer-logo-visible" : ""}`}>
-        <img src="https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png" alt="" className="footer-logo-img" />
-      </div>
       <div className="footer-main">
         <div className="container footer-cols">
           <div className="footer-col">
@@ -1052,6 +1049,11 @@ function Footer() {
             <Link to="/contact-us-2" className="footer-nav-link">Contact Us</Link>
           </div>
         </div>
+      </div>
+      <div aria-hidden="true" className={`footer-divider${visible ? " footer-divider-visible" : ""}`}>
+        <span className="footer-divider-line" />
+        <img src="https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png" alt="" className="footer-logo-img" />
+        <span className="footer-divider-line" />
       </div>
       <div className="footer-bottom">
         <div className="container footer-bottom-row">

@@ -1678,23 +1678,19 @@ h3 {
 .footer-divider {
   display: flex;
   justify-content: center;
-  margin-top: -19px;
-  position: relative;
+  padding: 1.4rem 0;
   pointer-events: none;
 }
 
 .footer-logo-img {
-  height: 36px;
+  height: 40px;
   width: auto;
-  filter: brightness(0) invert(1);
-  background: #0c0e12;
-  padding: 0 1.2rem;
   opacity: 0;
-  transition: opacity 0.8s ease 0.2s;
+  transition: opacity 1s ease 0.3s;
 }
 
 .footer-divider-visible .footer-logo-img {
-  opacity: 0.75;
+  opacity: 0.65;
 }
 
 .footer-main {

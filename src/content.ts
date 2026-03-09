@@ -138,12 +138,12 @@ export const capabilityCards = [
   {
     title: "Flexible Customization",
     description:
-      "Our platforms are built to adapt — configurable workflows, modular architecture, and extensible APIs ensure every solution fits your organization's unique requirements.",
+      "No two organizations are alike. Our platforms are built to bend — not break — adapting to your workflows, data structures, and business logic without compromising performance.",
   },
   {
     title: "Enterprise-Grade Solutions",
     description:
-      "Designed for scale, security, and reliability, our products meet the demands of complex enterprise environments — from multi-TB data workloads to mission-critical engagement systems.",
+      "Built for the demands of large-scale operations: robust security, high availability, and the kind of reliability that mission-critical environments require.",
   },
 ];
 

@@ -326,7 +326,7 @@ function HeroOrbitAnimation() {
         </div>
       </div>
       <p className="hero-orbit-caption">
-        Products that enhance <strong>stakeholder engagement</strong>, <strong>streamline operations</strong> and <strong>unlock</strong> the full potential of your data
+        <strong>Unlock data.</strong> <strong>Streamline operations.</strong> <strong>Empower people.</strong>
       </p>
     </div>
   );

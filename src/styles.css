@@ -199,7 +199,7 @@ p {
   .main-nav {
     display: none;
     position: fixed;
-    top: 72px;
+    top: var(--header-h);
     left: 0;
     right: 0;
     flex-direction: column;
@@ -1627,9 +1627,16 @@ textarea:focus-visible,
   }
 
   .nav-row {
-    padding: 0.6rem 0;
-    align-items: flex-start;
-    flex-direction: column;
+    min-height: 52px;
+    align-items: center;
+  }
+
+  .logo-image {
+    height: 40px;
+  }
+
+  :root {
+    --header-h: 52px;
   }
 
   .footer-cols {

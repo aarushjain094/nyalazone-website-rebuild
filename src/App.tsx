@@ -1051,9 +1051,7 @@ function Footer() {
         </div>
       </div>
       <div aria-hidden="true" className={`footer-divider${visible ? " footer-divider-visible" : ""}`}>
-        <span className="footer-divider-line" />
         <img src="https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png" alt="" className="footer-logo-img" />
-        <span className="footer-divider-line" />
       </div>
       <div className="footer-bottom">
         <div className="container footer-bottom-row">

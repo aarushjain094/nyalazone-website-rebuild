@@ -1677,38 +1677,24 @@ h3 {
 
 .footer-divider {
   display: flex;
-  align-items: center;
-  gap: 1.6rem;
-  padding: 1.6rem 2.4rem;
+  justify-content: center;
+  margin-top: -19px;
+  position: relative;
   pointer-events: none;
 }
 
-.footer-divider-line {
-  flex: 1;
-  height: 1px;
-  background: #1c2535;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
-}
-
-.footer-divider-visible .footer-divider-line {
-  transform: scaleX(1);
-}
-
 .footer-logo-img {
-  height: 30px;
+  height: 36px;
   width: auto;
-  flex-shrink: 0;
   filter: brightness(0) invert(1);
+  background: #0c0e12;
+  padding: 0 1.2rem;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+  transition: opacity 0.8s ease 0.2s;
 }
 
 .footer-divider-visible .footer-logo-img {
   opacity: 0.75;
-  transform: translateY(0);
 }
 
 .footer-main {

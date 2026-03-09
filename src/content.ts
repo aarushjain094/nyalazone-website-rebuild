@@ -459,7 +459,7 @@ export const contactPage: TextPage = {
 
 export const contactOffices: ContactOffice[] = [
   {
-    country: "Johannesburg, South Africa",
+    country: "Midrand, South Africa",
     flagUrl: "https://flagcdn.com/w80/za.png",
     address: "248, Polofields, Waterfall City, Midrand",
     phone: "+27 (062) 463 9701",

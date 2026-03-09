@@ -1124,8 +1124,8 @@ h3 {
 
 @media (max-width: 768px) {
   .text-image-row {
-    grid-template-columns: 3fr 2fr;
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
 
   .text-image-text {
@@ -1133,8 +1133,9 @@ h3 {
   }
 
   .text-image-img {
-    grid-column: 2;
-    max-height: 220px;
+    grid-column: 1;
+    max-height: 260px;
+    width: 100%;
     object-fit: cover;
   }
 }

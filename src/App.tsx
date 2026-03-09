@@ -834,24 +834,59 @@ function CareersPageView() {
   );
 }
 
-function CopyLinkButton({ url }: { url: string }) {
+function ShareMenu({ url, title }: { url: string; title: string }) {
+  const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   async function handleCopy() {
     await navigator.clipboard.writeText(url);
     setCopied(true);
+    setOpen(false);
     setTimeout(() => setCopied(false), 2000);
   }
 
+  function handleNativeShare() {
+    navigator.share({ title, url });
+    setOpen(false);
+  }
+
+  const canNativeShare = typeof navigator !== "undefined" && !!navigator.share;
+  const emailHref = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+
   return (
-    <button className="resource-copy-btn" onClick={handleCopy} aria-label="Copy video link">
-      {copied ? (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-      ) : (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+    <div className="share-menu-wrap" ref={ref}>
+      <button className="resource-copy-btn" onClick={() => setOpen((v) => !v)} aria-label="Share video">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+        {copied ? "Copied!" : "Share"}
+      </button>
+      {open && (
+        <div className="share-dropdown">
+          {canNativeShare && (
+            <button className="share-option" onClick={handleNativeShare}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+              Share via…
+            </button>
+          )}
+          <button className="share-option" onClick={handleCopy}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            Copy Link
+          </button>
+          <a className="share-option" href={emailHref} onClick={() => setOpen(false)}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Email
+          </a>
+        </div>
       )}
-      {copied ? "Copied!" : "Shareable Link"}
-    </button>
+    </div>
   );
 }
 
@@ -875,7 +910,7 @@ function ResourcesPageView() {
               <h3 className="resource-headline">{item.title}</h3>
               <p className="resource-subheadline">{item.headline}</p>
               <p className="resource-desc">{item.description}</p>
-              <CopyLinkButton url={item.videoUrl} />
+              <ShareMenu url={item.videoUrl} title={item.title} />
             </div>
           </article>
         ))}

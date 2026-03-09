@@ -1022,23 +1022,20 @@ h3 {
 
 .product-title-block {
   display: flex;
-  align-items: center;
-  gap: 1.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .product-title-logo {
-  height: 72px;
+  height: 108px;
   width: auto;
-  max-width: 180px;
+  max-width: 260px;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
 .product-title-sep {
-  width: 1px;
-  height: 52px;
-  background: var(--line);
-  flex-shrink: 0;
+  display: none;
 }
 
 .product-title-text {

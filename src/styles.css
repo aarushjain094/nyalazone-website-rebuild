@@ -326,8 +326,8 @@ p {
 
 .hero-orbit-wrap {
   position: relative;
-  width: 260px;
-  height: 260px;
+  width: 220px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -379,13 +379,13 @@ p {
   height: 100%;
 }
 
-/* Positions: container 260×260, center (130,130), icon half=22px */
-/* Lock: θ=40°,  r=68  → top:54, left:152 */
-.orbit-icon-1 { top: 54px;  left: 152px; animation: orbitFloat 3.5s ease-in-out infinite; }
-/* Gear: θ=130°, r=108 → top:179, left:182 */
-.orbit-icon-2 { top: 179px; left: 182px; animation: orbitFloat 4s ease-in-out infinite 0.9s; }
-/* People: θ=240°, r=108 → top:163, left:15 */
-.orbit-icon-3 { top: 163px; left: 15px;  animation: orbitFloat 3.8s ease-in-out infinite 1.6s; }
+/* Positions: container 220×220, center (110,110), icon half=22px */
+/* Lock: θ=40°,  r=56  → top:44, left:124 */
+.orbit-icon-1 { top: 44px;  left: 124px; animation: orbitFloat 3.5s ease-in-out infinite; }
+/* Gear: θ=130°, r=90  → top:147, left:158 */
+.orbit-icon-2 { top: 147px; left: 158px; animation: orbitFloat 4s ease-in-out infinite 0.9s; }
+/* People: θ=240°, r=90 → top:134, left:8  */
+.orbit-icon-3 { top: 134px; left: 8px;   animation: orbitFloat 3.8s ease-in-out infinite 1.6s; }
 
 .orbit-gear-svg {
   animation: spinGear 7s linear infinite;

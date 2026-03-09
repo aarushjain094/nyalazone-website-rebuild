@@ -1610,6 +1610,11 @@ textarea:focus-visible,
     grid-template-columns: 1fr;
   }
 
+  .offerings-scroll-card .feature-image,
+  .card-grid .feature-image {
+    height: 130px;
+  }
+
   .flagship-row,
   .products-quadrant {
     grid-template-columns: 1fr;

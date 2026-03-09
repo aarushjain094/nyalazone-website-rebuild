@@ -290,7 +290,7 @@ function HeroOrbitAnimation() {
 
   useEffect(() => {
     let a1 = 40, a2 = 130;
-    const r1 = 56, r2 = 90;
+    const r1 = 86, r2 = 136;
     let v1 = 0.35, v2 = 0.25;
     let rafId: number;
 
@@ -314,9 +314,9 @@ function HeroOrbitAnimation() {
   return (
     <div className="hero-orbit-column" aria-hidden="true">
       <div className="hero-orbit-wrap">
-        <svg className="orbit-rings-svg" viewBox="0 0 220 220" fill="none">
-          <circle cx="110" cy="110" r="56" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="5 5"/>
-          <circle cx="110" cy="110" r="90" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="5 5"/>
+        <svg className="orbit-rings-svg" viewBox="0 0 280 280" fill="none">
+          <circle cx="140" cy="140" r="86"  stroke="#c0c0c0" strokeWidth="1"   strokeDasharray="3 4"/>
+          <circle cx="140" cy="140" r="136" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="5 6"/>
         </svg>
         <div className="orbit-center">
           <img src={logoUrl} alt="" className="orbit-center-logo"/>

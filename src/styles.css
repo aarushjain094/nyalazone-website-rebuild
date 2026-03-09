@@ -218,7 +218,18 @@ p {
   }
 
   .nav-item-with-menu {
+    padding-top: 0;
     padding-bottom: 0;
+  }
+
+  .nav-link {
+    font-size: 0.92rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  .dropdown-link {
+    font-size: 0.84rem;
+    padding: 0.3rem 0.5rem;
   }
 
   .dropdown-menu {
@@ -1019,6 +1030,9 @@ h3 {
   .text-image-img {
     grid-column: 1;
     order: -1;
+    max-height: 260px;
+    width: 100%;
+    object-fit: contain;
   }
 }
 
@@ -1105,6 +1119,12 @@ h3 {
 
   .para-col-images {
     grid-column: 1;
+    order: -1;
+  }
+
+  .para-col-img {
+    max-height: 260px;
+    object-fit: contain;
   }
 
 

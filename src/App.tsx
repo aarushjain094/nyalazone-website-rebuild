@@ -1007,9 +1007,34 @@ function Section({
   );
 }
 
+function FooterLogo() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={`footer-logo-wrap${visible ? " footer-logo-visible" : ""}`}>
+      <img
+        src="https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png"
+        alt="Nyalazone"
+        className="footer-logo-img"
+      />
+    </div>
+  );
+}
+
 function Footer() {
   return (
     <footer className="site-footer">
+      <FooterLogo />
       <div className="footer-main">
         <div className="container footer-cols">
           <div className="footer-col">

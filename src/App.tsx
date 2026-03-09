@@ -321,7 +321,6 @@ function HomePage() {
       </Section>
 
       <Section title={whyNyalazone.title} className="section-why">
-        <p className="lead detail-copy">{whyNyalazone.paragraph}</p>
         <div className="card-grid">
           {capabilityCards.map((item) => (
             <article key={item.title} className="feature-card">

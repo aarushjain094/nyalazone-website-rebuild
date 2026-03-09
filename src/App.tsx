@@ -286,43 +286,49 @@ function OfferingsScroll() {
 function HeroOrbitAnimation() {
   const logoUrl = "https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png";
   return (
-    <div className="hero-orbit-wrap" aria-hidden="true">
-      <svg className="orbit-rings-svg" viewBox="0 0 320 320" fill="none">
-        <circle cx="160" cy="160" r="90"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
-        <circle cx="160" cy="160" r="138" stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
-      </svg>
-      <div className="orbit-center">
-        <img src={logoUrl} alt="" className="orbit-center-logo"/>
-      </div>
-      {/* Unlocked lock — top, outer ring */}
-      <div className="orbit-icon orbit-icon-1">
-        <div className="orbit-icon-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2"/>
-            <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
-          </svg>
+    <div className="hero-orbit-column" aria-hidden="true">
+      <div className="hero-orbit-wrap">
+        <svg className="orbit-rings-svg" viewBox="0 0 320 320" fill="none">
+          <circle cx="160" cy="160" r="80"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
+          <circle cx="160" cy="160" r="115" stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
+          <circle cx="160" cy="160" r="148" stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
+        </svg>
+        <div className="orbit-center">
+          <img src={logoUrl} alt="" className="orbit-center-logo"/>
+        </div>
+        {/* Unlocked lock — inner ring, top-right */}
+        <div className="orbit-icon orbit-icon-1">
+          <div className="orbit-icon-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+            </svg>
+          </div>
+        </div>
+        {/* Gear — middle ring, bottom-right */}
+        <div className="orbit-icon orbit-icon-2">
+          <div className="orbit-icon-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="orbit-gear-svg">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+        </div>
+        {/* People — outer ring, bottom-left */}
+        <div className="orbit-icon orbit-icon-3">
+          <div className="orbit-icon-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
         </div>
       </div>
-      {/* Gear — bottom-right, outer ring */}
-      <div className="orbit-icon orbit-icon-2">
-        <div className="orbit-icon-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="orbit-gear-svg">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-          </svg>
-        </div>
-      </div>
-      {/* People together — left, inner ring */}
-      <div className="orbit-icon orbit-icon-3">
-        <div className="orbit-icon-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-        </div>
-      </div>
+      <p className="hero-orbit-caption">
+        Products that enhance <strong>stakeholder engagement</strong>, <strong>streamline operations</strong> and <strong>unlock</strong> the full potential of your data
+      </p>
     </div>
   );
 }

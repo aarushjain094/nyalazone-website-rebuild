@@ -313,7 +313,7 @@ p {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 3rem;
-  align-items: end;
+  align-items: center;
 }
 
 /* Orbit animation */

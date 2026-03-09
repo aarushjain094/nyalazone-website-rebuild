@@ -1678,19 +1678,27 @@ h3 {
 .footer-divider {
   display: flex;
   justify-content: center;
-  padding: 1.4rem 0;
+  margin-top: -20px;
   pointer-events: none;
 }
 
-.footer-logo-img {
-  height: 40px;
-  width: auto;
+.footer-logo-mask {
+  background: #0c0e12;
+  padding: 0 1.6rem;
   opacity: 0;
-  transition: opacity 1s ease 0.3s;
+  transition: opacity 0.9s ease 0.3s;
 }
 
-.footer-divider-visible .footer-logo-img {
-  opacity: 0.65;
+.footer-divider-visible .footer-logo-mask {
+  opacity: 1;
+}
+
+.footer-logo-img {
+  height: 38px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
 }
 
 .footer-main {

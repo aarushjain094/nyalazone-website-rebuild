@@ -126,7 +126,7 @@ export const homeHighlights: CardItem[] = [
 export const whyNyalazone = {
   title: "Why Nyalazone?",
   paragraph:
-    "Nyalazone is a leading global provider of AI-enabled Digital Transformation and Enterprise Data Management solutions and services. In today's competitive environment, operational efficiency and strategic decision-making are vital for growth and resilience.",
+    "Nyalazone is a technology-first company dedicated to building products that drive meaningful digital transformation across industries. With a strong focus on innovation, research, and engineering excellence, we develop intelligent platforms that empower organizations to streamline operations, enhance stakeholder engagement, and unlock the full potential of their data.",
 };
 
 export const capabilityCards = [

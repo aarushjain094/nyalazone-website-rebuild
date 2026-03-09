@@ -1021,10 +1021,10 @@ function FooterLogo() {
     return () => observer.disconnect();
   }, []);
   return (
-    <div ref={ref} className={`footer-logo-wrap${visible ? " footer-logo-visible" : ""}`}>
+    <div ref={ref} className={`footer-logo-wrap${visible ? " footer-logo-visible" : ""}`} aria-hidden="true">
       <img
         src="https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png"
-        alt="Nyalazone"
+        alt=""
         className="footer-logo-img"
       />
     </div>

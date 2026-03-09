@@ -283,6 +283,37 @@ function OfferingsScroll() {
   );
 }
 
+function HeroLockAnimation() {
+  return (
+    <div className="hero-anim-wrap" aria-hidden="true">
+      <div className="hero-anim-scene">
+        <div className="hero-anim-glow" />
+        <img
+          src="https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png"
+          alt=""
+          className="hero-anim-logo"
+        />
+        <div className="hero-anim-lock">
+          <svg viewBox="0 0 64 76" fill="none" xmlns="http://www.w3.org/2000/svg" className="lock-svg">
+            <g className="lock-shackle-g">
+              <path
+                d="M18 33V21C18 12.716 24.716 6 33 6 41.284 6 48 12.716 48 21V33"
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lock-shackle-path"
+              />
+            </g>
+            <rect x="7" y="31" width="50" height="40" rx="8" className="lock-body-rect" />
+            <circle cx="32" cy="51" r="5" className="lock-hole" />
+            <rect x="29.5" y="51" width="5" height="8" rx="2.5" className="lock-hole" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
   return (
     <>
@@ -301,6 +332,7 @@ function HomePage() {
               </Link>
             </div>
           </div>
+          <HeroLockAnimation />
         </div>
       </section>
 

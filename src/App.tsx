@@ -634,7 +634,7 @@ function TextPageView({ page }: { page: TextPage }) {
     : undefined;
 
   return (
-    <Section title={page.title} titleNode={titleNode}>
+    <Section title={page.title} titleNode={titleNode} className={page.hideTitleSep ? "section-vivid section-logo-only" : undefined}>
       {page.highlights && (
         <div className="highlights-bar">
           {page.highlights.map((h) => (

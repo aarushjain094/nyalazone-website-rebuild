@@ -379,6 +379,11 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.section-logo-only .section-head {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 
 .section-head-row {
   display: flex;

@@ -310,7 +310,105 @@ p {
 }
 
 .hero-grid {
-  max-width: 700px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Orbit animation */
+.hero-orbit-wrap {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+}
+
+.orbit-rings-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-center {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 4px 24px rgba(12, 73, 162, 0.18);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.orbit-center-logo {
+  width: 68px;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.orbit-icon {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  z-index: 3;
+}
+
+.orbit-icon-card {
+  width: 52px;
+  height: 52px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(10, 41, 73, 0.12);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px;
+}
+
+.orbit-icon-card svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Positions: container 320×320, center (160,160) */
+/* Lock: θ=345° outer r=138 → top:1, left:98  */
+.orbit-icon-1 { top: 1px;   left: 98px;  animation: orbitFloat 3.5s ease-in-out infinite; }
+/* Gear: θ=120° outer r=138 → top:203, left:253 */
+.orbit-icon-2 { top: 203px; left: 253px; animation: orbitFloat 4s ease-in-out infinite 0.9s; }
+/* People: θ=250° inner r=90 → top:165, left:49 */
+.orbit-icon-3 { top: 165px; left: 49px;  animation: orbitFloat 3.8s ease-in-out infinite 1.6s; }
+
+.orbit-gear-svg {
+  animation: spinGear 7s linear infinite;
+}
+
+@keyframes orbitFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+@keyframes spinGear {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (max-width: 980px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-orbit-wrap {
+    display: none;
+  }
 }
 
 .eyebrow {
@@ -1884,10 +1982,6 @@ textarea:focus-visible,
 }
 
 @media (max-width: 980px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

@@ -808,8 +808,8 @@ function CareersPageView() {
           _captcha: "false",
           name: form.name,
           email: form.email,
-          role: form.role || "Not provided",
-          message: form.message || "No message provided",
+          role: form.role,
+          message: form.message,
         }),
       });
 
@@ -854,11 +854,11 @@ function CareersPageView() {
             </div>
             <div className="form-field">
               <label className="form-label" htmlFor="careers-role">Role of Interest</label>
-              <input id="careers-role" className="form-input" type="text" name="role" value={form.role} onChange={handleChange} />
+              <input id="careers-role" className="form-input" type="text" name="role" value={form.role} onChange={handleChange} required />
             </div>
             <div className="form-field">
               <label className="form-label" htmlFor="careers-message">Why Nyalazone?</label>
-              <textarea id="careers-message" className="form-textarea" name="message" value={form.message} onChange={handleChange} rows={5} />
+              <textarea id="careers-message" className="form-textarea" name="message" value={form.message} onChange={handleChange} rows={5} required />
             </div>
             {submitError && <p className="lead detail-copy">{submitError}</p>}
             <button type="submit" className="button button-primary" disabled={submitting}>

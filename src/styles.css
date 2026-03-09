@@ -1146,6 +1146,16 @@ h3 {
     grid-template-columns: 3fr 2fr;
     gap: 1rem;
   }
+
+  .text-image-text {
+    grid-column: 1;
+  }
+
+  .text-image-img {
+    grid-column: 2;
+    max-height: 220px;
+    object-fit: cover;
+  }
 }
 
 .product-title-block {

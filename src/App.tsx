@@ -289,9 +289,8 @@ function HeroOrbitAnimation() {
     <div className="hero-orbit-column" aria-hidden="true">
       <div className="hero-orbit-wrap">
         <svg className="orbit-rings-svg" viewBox="0 0 220 220" fill="none">
-          <circle cx="110" cy="110" r="42"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
-          <circle cx="110" cy="110" r="62"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
-          <circle cx="110" cy="110" r="82"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
+          <circle cx="110" cy="110" r="56"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
+          <circle cx="110" cy="110" r="90"  stroke="#c2d8ec" strokeWidth="1.5" strokeDasharray="5 5"/>
         </svg>
         <div className="orbit-center">
           <img src={logoUrl} alt="" className="orbit-center-logo"/>

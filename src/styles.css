@@ -356,26 +356,22 @@ p {
 
 .orbit-icon {
   position: absolute;
-  width: 34px;
-  height: 34px;
-  top: 50%;
-  left: 50%;
-  margin-top: -17px;
-  margin-left: -17px;
+  width: 44px;
+  height: 44px;
   z-index: 3;
 }
 
 .orbit-icon-card {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   background: white;
-  border-radius: 9px;
-  box-shadow: 0 3px 10px rgba(10, 41, 73, 0.11);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(10, 41, 73, 0.11);
   border: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 7px;
+  padding: 9px;
 }
 
 .orbit-icon-card svg {
@@ -383,26 +379,29 @@ p {
   height: 100%;
 }
 
-/* Lock: ring 1 r=42 */
-.orbit-icon-1 { animation: orbit-r42 16s linear infinite; }
-/* Gear: ring 2 r=62 */
-.orbit-icon-2 { animation: orbit-r62 22s linear infinite; }
-/* People: ring 3 r=82 */
-.orbit-icon-3 { animation: orbit-r82 28s linear infinite; }
-
-@keyframes orbit-r42 {
-  from { transform: rotate(40deg)  translateX(42px) rotate(-40deg); }
-  to   { transform: rotate(400deg) translateX(42px) rotate(-400deg); }
+/* Icons centered at origin, orbit via rotation+translate */
+.orbit-icon {
+  top: 50%;
+  left: 50%;
+  margin-top: -22px;
+  margin-left: -22px;
 }
 
-@keyframes orbit-r62 {
-  from { transform: rotate(150deg)  translateX(62px) rotate(-150deg); }
-  to   { transform: rotate(510deg)  translateX(62px) rotate(-510deg); }
+/* Lock: inner ring r=56, starts at 40° */
+.orbit-icon-1 { animation: orbit-inner 18s linear infinite; }
+/* Gear: outer ring r=90, starts at 130° */
+.orbit-icon-2 { animation: orbit-outer 24s linear infinite; }
+/* People: outer ring r=90, starts at 240° */
+.orbit-icon-3 { animation: orbit-outer 24s linear infinite reverse; animation-delay: -8s; }
+
+@keyframes orbit-inner {
+  from { transform: rotate(40deg)  translateX(56px) rotate(-40deg); }
+  to   { transform: rotate(400deg) translateX(56px) rotate(-400deg); }
 }
 
-@keyframes orbit-r82 {
-  from { transform: rotate(260deg)  translateX(82px) rotate(-260deg); }
-  to   { transform: rotate(620deg)  translateX(82px) rotate(-620deg); }
+@keyframes orbit-outer {
+  from { transform: rotate(130deg)  translateX(90px) rotate(-130deg); }
+  to   { transform: rotate(490deg)  translateX(90px) rotate(-490deg); }
 }
 
 .orbit-gear-svg {

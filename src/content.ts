@@ -98,7 +98,7 @@ export const homeHero = {
   eyebrow: "Leading provider of digital transformation and data management solutions",
   title: "Elevate Your Enterprise & Deliver AI-enabled Transformation",
   subtitle:
-    "Nyalazone provides sophisticated AI-enabled automation platforms and consulting services. We simplify complex enterprise and public service stakeholder engagement and data management requirements through innovative, integrated solutions.",
+    "Nyalazone is a technology-first company dedicated to building products that drive meaningful digital transformation across industries. With a strong focus on innovation, research, and engineering excellence, we develop intelligent platforms that empower organizations to streamline operations, enhance stakeholder engagement, and unlock the full potential of their data.",
   imageUrl: "https://nyalazone.ai/wp-content/uploads/2021/11/Rev-slider-img-1.jpg",
 };
 

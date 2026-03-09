@@ -369,7 +369,7 @@ function HomePage() {
         </div>
       </section>
 
-      <Section title="Our Flagship Products">
+      <Section title="Our Flagship Products" className="section-flagship">
         <div className="flagship-banner">
           <div className="flagship-row">
             {products.map((item) => (

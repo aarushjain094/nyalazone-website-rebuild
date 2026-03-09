@@ -287,34 +287,22 @@ function HeroOrbitAnimation() {
   const logoUrl = "https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png";
   const icon1Ref = useRef<HTMLDivElement>(null);
   const icon2Ref = useRef<HTMLDivElement>(null);
-  const icon3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let a1 = 40, a2 = 130, a3 = 260;
-    const r1 = 56, r2 = 90, r3 = 90;
-    let v1 = 0.35, v2 = 0.25, v3 = -0.25;
+    let a1 = 40, a2 = 130;
+    const r1 = 56, r2 = 90;
+    let v1 = 0.35, v2 = 0.25;
     let rafId: number;
 
     function tick() {
       a1 += v1;
       a2 += v2;
-      a3 += v3;
-
-      // Collision between icons 2 & 3 on the outer ring
-      let diff = ((a2 - a3) % 360 + 360) % 360;
-      if (diff > 180) diff -= 360;
-      if (Math.abs(diff) < 22) {
-        const tmp = v2; v2 = v3; v3 = tmp;
-        a2 += v2 * 4;
-        a3 += v3 * 4;
-      }
 
       const apply = (el: HTMLDivElement | null, a: number, r: number) => {
         if (el) el.style.transform = `rotate(${a}deg) translateX(${r}px) rotate(${-a}deg)`;
       };
       apply(icon1Ref.current, a1, r1);
       apply(icon2Ref.current, a2, r2);
-      apply(icon3Ref.current, a3, r3);
 
       rafId = requestAnimationFrame(tick);
     }
@@ -351,20 +339,9 @@ function HeroOrbitAnimation() {
             </svg>
           </div>
         </div>
-        {/* People — outer ring */}
-        <div className="orbit-icon" ref={icon3Ref}>
-          <div className="orbit-icon-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0c49a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-        </div>
       </div>
       <p className="hero-orbit-caption">
-        <strong>Unlock data.</strong> <strong>Streamline operations.</strong> <strong>Empower people.</strong>
+        Unlock data to <strong>empower your people</strong>
       </p>
     </div>
   );

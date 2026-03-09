@@ -1421,6 +1421,24 @@ h3 {
   box-shadow: 0 0 0 2px rgba(12, 73, 162, 0.15);
 }
 
+.form-input-file {
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.form-label-hint {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.form-file-name {
+  font-size: 0.82rem;
+  color: var(--blue);
+  margin: 0.3rem 0 0;
+}
+
 .form-textarea {
   resize: vertical;
 }

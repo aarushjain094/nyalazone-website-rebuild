@@ -744,6 +744,7 @@ const EMPTY_FORM = { name: "", email: "", role: "", message: "" };
 
 function CareersPageView() {
   const [form, setForm] = useState(EMPTY_FORM);
+  const [resume, setResume] = useState<File | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -752,27 +753,30 @@ function CareersPageView() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setResume(e.target.files?.[0] ?? null);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitError(null);
     setSubmitting(true);
 
     try {
+      const data = new FormData();
+      data.append("_subject", "New Careers Interest Submission");
+      data.append("_template", "table");
+      data.append("_captcha", "false");
+      data.append("name", form.name);
+      data.append("email", form.email);
+      data.append("role", form.role);
+      data.append("message", form.message);
+      if (resume) data.append("resume", resume, resume.name);
+
       const response = await fetch("https://formsubmit.co/ajax/recruit@nyalazone.com", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: "New Careers Interest Submission",
-          _template: "table",
-          _captcha: "false",
-          name: form.name,
-          email: form.email,
-          role: form.role,
-          message: form.message,
-        }),
+        headers: { Accept: "application/json" },
+        body: data,
       });
 
       if (!response.ok) {
@@ -780,6 +784,7 @@ function CareersPageView() {
       }
 
       setForm(EMPTY_FORM);
+      setResume(null);
       setSubmitted(true);
     } catch {
       setSubmitError("We could not submit your request right now. Please email recruit@nyalazone.com directly.");
@@ -821,6 +826,11 @@ function CareersPageView() {
             <div className="form-field">
               <label className="form-label" htmlFor="careers-message">Why Nyalazone?</label>
               <textarea id="careers-message" className="form-textarea" name="message" value={form.message} onChange={handleChange} rows={5} required />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="careers-resume">Resume <span className="form-label-hint">(PDF or DOCX)</span></label>
+              <input id="careers-resume" className="form-input form-input-file" type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} />
+              {resume && <p className="form-file-name">{resume.name}</p>}
             </div>
             {submitError && <p className="lead detail-copy">{submitError}</p>}
             <button type="submit" className="button button-primary" disabled={submitting}>

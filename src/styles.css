@@ -1181,6 +1181,8 @@ h3 {
 .careers-form-wrap h3 {
   margin-bottom: var(--space-3);
   font-size: 1.4rem;
+  width: 100%;
+  text-align: center;
 }
 
 .careers-form {

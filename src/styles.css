@@ -284,6 +284,26 @@ p {
   padding: 2rem 0 2.2rem;
 }
 
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal {
+  animation: heroReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-reveal-1 { animation-delay: 0ms; }
+.hero-reveal-2 { animation-delay: 160ms; }
+.hero-reveal-3 { animation-delay: 300ms; }
+.hero-reveal-4 { animation-delay: 440ms; }
+
 .hero-vivid {
   background: linear-gradient(115deg, #f2f9ff 0%, #ffffff 52%, #fff2f4 100%);
   border-bottom: 1px solid #d9e8f6;

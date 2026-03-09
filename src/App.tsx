@@ -289,10 +289,10 @@ function HomePage() {
       <section className="hero hero-vivid">
         <div className="container hero-grid">
           <div>
-            <p className="eyebrow">{homeHero.eyebrow}</p>
-            <RotatingHeroTitle />
-            <p className="lead">{homeHero.subtitle}</p>
-            <div className="cta-row">
+            <p className="eyebrow hero-reveal hero-reveal-1">{homeHero.eyebrow}</p>
+            <div className="hero-reveal hero-reveal-2"><RotatingHeroTitle /></div>
+            <p className="lead hero-reveal hero-reveal-3">{homeHero.subtitle}</p>
+            <div className="cta-row hero-reveal hero-reveal-4">
               <Link className="button button-primary" to="/contact-us-2">
                 Contact Us
               </Link>

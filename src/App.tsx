@@ -867,7 +867,7 @@ function CareersPageView() {
         <div className="careers-form-wrap">
         <h3>Express Your Interest</h3>
         {submitted ? (
-          <p className="lead detail-copy">Thanks for reaching out - we'll be in touch!</p>
+          <p className="lead detail-copy">Thanks for reaching out. We'll be in touch if there's a fit!</p>
         ) : (
           <form className="careers-form" onSubmit={handleSubmit}>
             <div className="form-field">

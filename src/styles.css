@@ -542,11 +542,11 @@ h3 {
 }
 
 .section-why .card-grid .feature-card:nth-child(2) {
-  background: linear-gradient(160deg, #f5faff 0%, #ddeeff 100%);
+  background: linear-gradient(160deg, #f7fbff 0%, #e8f4ff 100%);
 }
 
 .section-why .card-grid .feature-card:nth-child(3) {
-  background: linear-gradient(160deg, #eaf4ff 0%, #cce3f8 100%);
+  background: linear-gradient(160deg, #f0f8ff 0%, #ddeeff 100%);
 }
 
 .feature-image {

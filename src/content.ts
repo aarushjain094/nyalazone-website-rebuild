@@ -241,6 +241,7 @@ export const partnersPage: TextPage = {
         "Leggero Data Management and Analytics Platform (Leggero DMAP)",
         "Leggero Dynamic Data Source (Leggero DDS)",
         "Leggero Digital Customer Engagement (Leggero DCE)",
+        "Leggero.ai",
       ],
     },
     {
@@ -272,6 +273,7 @@ export const partnerProgramPage: TextPage = {
         "Leggero Data Management and Analytics Platform (Leggero DMAP)",
         "Leggero Dynamic Data Source (Leggero DDS)",
         "Leggero Digital Customer Engagement (Leggero DCE)",
+        "Leggero.ai",
       ],
     },
     {

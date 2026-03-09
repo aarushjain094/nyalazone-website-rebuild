@@ -824,13 +824,13 @@ function CareersPageView() {
               <input id="careers-role" className="form-input" type="text" name="role" value={form.role} onChange={handleChange} required />
             </div>
             <div className="form-field">
-              <label className="form-label" htmlFor="careers-message">Why Nyalazone?</label>
-              <textarea id="careers-message" className="form-textarea" name="message" value={form.message} onChange={handleChange} rows={5} required />
-            </div>
-            <div className="form-field">
               <label className="form-label" htmlFor="careers-resume">Resume <span className="form-label-hint">(PDF or DOCX)</span></label>
               <input id="careers-resume" className="form-input form-input-file" type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} />
               {resume && <p className="form-file-name">{resume.name}</p>}
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="careers-message">Why Nyalazone?</label>
+              <textarea id="careers-message" className="form-textarea" name="message" value={form.message} onChange={handleChange} rows={2} required />
             </div>
             {submitError && <p className="lead detail-copy">{submitError}</p>}
             <button type="submit" className="button button-primary" disabled={submitting}>

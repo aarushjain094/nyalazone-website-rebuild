@@ -542,17 +542,17 @@ h3 {
 }
 
 .section-why .card-grid .feature-card:nth-child(1) {
-  background: linear-gradient(145deg, #eef7ff 0%, #d4ecff 100%);
-  border-top-color: #5bb8f5;
+  background: linear-gradient(160deg, #ffffff 0%, #f0f8ff 100%);
+  border-top-color: #7ec8f5;
 }
 
 .section-why .card-grid .feature-card:nth-child(2) {
-  background: linear-gradient(145deg, #cce4f8 0%, #a8d0f0 100%);
+  background: linear-gradient(160deg, #f5faff 0%, #ddeeff 100%);
   border-top-color: #2086dc;
 }
 
 .section-why .card-grid .feature-card:nth-child(3) {
-  background: linear-gradient(145deg, #a8d0f0 0%, #6aaee0 100%);
+  background: linear-gradient(160deg, #eaf4ff 0%, #cce3f8 100%);
   border-top-color: #0c49a2;
 }
 

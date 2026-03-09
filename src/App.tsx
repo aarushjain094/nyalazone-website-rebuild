@@ -164,7 +164,10 @@ function Header() {
                   className={({ isActive: routeActive }) =>
                     routeActive || isActive ? "nav-link nav-link-active" : "nav-link"
                   }
-                  onClick={() => setOpenMenu(null)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenMenu(openMenu === item.to ? null : item.to);
+                  }}
                 >
                   {item.label}
                 </NavLink>

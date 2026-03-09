@@ -293,20 +293,42 @@ function HeroOrbitAnimation() {
     let a1 = 40, a2 = 130, a3 = 260;
     const r1 = 56, r2 = 90, r3 = 90;
     let v1 = 0.35, v2 = 0.25, v3 = -0.25;
+    let cool12 = 0, cool13 = 0;
     let rafId: number;
+
+    const toRad = Math.PI / 180;
+    function dist2D(angA: number, rA: number, angB: number, rB: number) {
+      const dx = rA * Math.cos(angA * toRad) - rB * Math.cos(angB * toRad);
+      const dy = rA * Math.sin(angA * toRad) - rB * Math.sin(angB * toRad);
+      return Math.sqrt(dx * dx + dy * dy);
+    }
 
     function tick() {
       a1 += v1;
       a2 += v2;
       a3 += v3;
+      cool12 = Math.max(0, cool12 - 1);
+      cool13 = Math.max(0, cool13 - 1);
 
-      // Collision between icons 2 & 3 on the outer ring
+      // Collision: icons 2 & 3 on the same outer ring
       let diff = ((a2 - a3) % 360 + 360) % 360;
       if (diff > 180) diff -= 360;
       if (Math.abs(diff) < 22) {
         const tmp = v2; v2 = v3; v3 = tmp;
         a2 += v2 * 4;
         a3 += v3 * 4;
+      }
+
+      // Slight collision: lock (inner) vs outer icons
+      if (cool12 === 0 && dist2D(a1, r1, a2, r2) < 46) {
+        v2 *= -0.85;
+        v1 *= 0.97;
+        cool12 = 60;
+      }
+      if (cool13 === 0 && dist2D(a1, r1, a3, r3) < 46) {
+        v3 *= -0.85;
+        v1 *= 0.97;
+        cool13 = 60;
       }
 
       const apply = (el: HTMLDivElement | null, a: number, r: number) => {

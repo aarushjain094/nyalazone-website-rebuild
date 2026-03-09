@@ -86,7 +86,7 @@ function App() {
           <Route path="/products" element={<ProductsQuadrantPage />} />
           <Route
             path="/offerings"
-            element={<CollectionPage title="Offerings" intro={offeringsIntro} items={offerings} className="section-vivid" />}
+            element={<CollectionPage title="Offerings" intro={offeringsIntro} items={offerings} className="section-vivid offerings-section" />}
           />
           <Route path="/partners" element={<TextPageView page={partnerProgramPage} />} />
           <Route path="/about-us" element={<TextPageView page={aboutPage} />} />
@@ -457,13 +457,15 @@ function CollectionPage({
           <Link key={`${title}-${item.title}`} to={item.to} className="feature-card-link">
             <article className="feature-card">
               {item.imageUrl && <img src={item.imageUrl} alt={`${item.title} visual`} className="feature-image" />}
-              <h3>{item.title}</h3>
-              {item.description && (
-                boldDescription
-                  ? <p><strong>{item.description}</strong></p>
-                  : <p>{item.description}</p>
-              )}
-              <span className="learn-more-btn">Learn More</span>
+              <div className="feature-card-body">
+                <h3>{item.title}</h3>
+                {item.description && (
+                  boldDescription
+                    ? <p><strong>{item.description}</strong></p>
+                    : <p>{item.description}</p>
+                )}
+                <span className="learn-more-btn">Learn More</span>
+              </div>
             </article>
           </Link>
         ))}

@@ -684,12 +684,71 @@ h3 {
   cursor: pointer;
 }
 
+.feature-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .card-grid .feature-image {
   margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-3);
   width: calc(100% + 2 * var(--space-4));
   border-radius: 0;
   border: none;
   border-bottom: 1px solid #d3e4f4;
+}
+
+/* Offerings page — horizontal card layout */
+.offerings-section .card-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.offerings-section .feature-card {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+
+.offerings-section .card-grid .feature-image {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  object-fit: cover;
+  margin: 0;
+  border: 1px solid #d3e4f4;
+  border-bottom: 1px solid #d3e4f4;
+}
+
+.offerings-section .feature-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.offerings-section .feature-card h3 {
+  font-size: 1rem;
+  margin-bottom: var(--space-2);
+}
+
+.offerings-section .feature-card p {
+  font-size: 0.9rem;
+  margin-bottom: var(--space-2);
+}
+
+@media (max-width: 768px) {
+  .offerings-section .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .offerings-section .card-grid .feature-image {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .detail-copy-leadline {

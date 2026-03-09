@@ -1679,7 +1679,6 @@ h3 {
   display: flex;
   justify-content: center;
   margin-top: -20px;
-  pointer-events: none;
 }
 
 .footer-logo-mask {

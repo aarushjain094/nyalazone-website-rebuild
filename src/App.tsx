@@ -1050,10 +1050,10 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div aria-hidden="true" className={`footer-divider${visible ? " footer-divider-visible" : ""}`}>
-        <div className="footer-logo-mask">
-          <img src="https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png" alt="" className="footer-logo-img" />
-        </div>
+      <div className={`footer-divider${visible ? " footer-divider-visible" : ""}`}>
+        <Link to="/" className="footer-logo-mask" aria-label="Go to home">
+          <img src="https://nyalazone.ai/wp-content/uploads/2025/04/NZ_AI_Col.png" alt="Nyalazone" className="footer-logo-img" />
+        </Link>
       </div>
       <div className="footer-bottom">
         <div className="container footer-bottom-row">

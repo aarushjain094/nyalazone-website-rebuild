@@ -552,23 +552,38 @@ function PageContent({ page }: { page: TextPage }) {
   return (
     <div className={page.contentClassName ?? ""}>
       {hasImages ? (
-        <div className={`para-columns${page.paragraphImageClassName ? ` ${page.paragraphImageClassName}` : ""}`}>
-          {page.paragraphs?.map((paragraph, index) => {
-            const isLead = page.boldFirstParagraph && index === 0;
-            const pNode = page.animatedTagline && index === 0
-              ? <AnimatedTagline text={paragraph} />
-              : page.pulsingTagline && index === 0
-              ? <Fragment><AnimatedTagline text={page.pulsingTagline} /><p className="lead detail-copy">{renderRichText(paragraph)}</p></Fragment>
-              : <p className={`lead detail-copy${isLead ? " detail-copy-leadline" : ""}`}>{renderRichText(paragraph)}</p>;
-            return (
-              <div key={paragraph} className="para-image-pair">
-                {pNode}
-                {page.paragraphImages![index] && <img src={page.paragraphImages![index]} alt="" className="para-pair-img" />}
-              </div>
-            );
-          })}
-          {bulletNodes}
-        </div>
+        <>
+          {/* Desktop: original two-column layout */}
+          <div className={`para-columns para-columns-desktop${page.paragraphImageClassName ? ` ${page.paragraphImageClassName}` : ""}`}>
+            <div className="para-col-text">
+              {paragraphNodes}
+              {bulletNodes}
+            </div>
+            <div className="para-col-images">
+              {page.paragraphImages!.map((img) => (
+                <img key={img} src={img} alt="" className="para-col-img" />
+              ))}
+            </div>
+          </div>
+          {/* Mobile: interleaved pairs */}
+          <div className={`para-columns-mobile${page.paragraphImageClassName ? ` ${page.paragraphImageClassName}` : ""}`}>
+            {page.paragraphs?.map((paragraph, index) => {
+              const isLead = page.boldFirstParagraph && index === 0;
+              const pNode = page.animatedTagline && index === 0
+                ? <AnimatedTagline text={paragraph} />
+                : page.pulsingTagline && index === 0
+                ? <Fragment><AnimatedTagline text={page.pulsingTagline} /><p className="lead detail-copy">{renderRichText(paragraph)}</p></Fragment>
+                : <p className={`lead detail-copy${isLead ? " detail-copy-leadline" : ""}`}>{renderRichText(paragraph)}</p>;
+              return (
+                <div key={paragraph} className="para-image-pair">
+                  {pNode}
+                  {page.paragraphImages![index] && <img src={page.paragraphImages![index]} alt="" className="para-pair-img" />}
+                </div>
+              );
+            })}
+            {bulletNodes}
+          </div>
+        </>
       ) : (
         <>
           {paragraphNodes}

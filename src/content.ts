@@ -27,6 +27,7 @@ export type TextPage = {
   paragraphImageClassName?: string;
   contentClassName?: string;
   boldFirstParagraph?: boolean;
+  hideTitleSep?: boolean;
   animatedTagline?: boolean;
   pulsingTagline?: string;
 };
@@ -485,6 +486,7 @@ export const contactOffices: ContactOffice[] = [
 export const detailPages: Record<string, TextPage> = {
   "/leggero-ai": {
     title: "Leggero.ai",
+    hideTitleSep: true,
     highlights: [
       { value: "AI-First", label: "BI Platform" },
       { value: "Natural Language", label: "Query Interface" },

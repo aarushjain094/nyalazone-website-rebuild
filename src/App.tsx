@@ -319,6 +319,7 @@ function HeroOrbitAnimation() {
           <circle cx="110" cy="110" r="90" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="5 5"/>
         </svg>
         <div className="orbit-center">
+          <div className="orbit-logo-o" />
           <img src={logoUrl} alt="" className="orbit-center-logo"/>
         </div>
         {/* Unlocked lock - inner ring */}

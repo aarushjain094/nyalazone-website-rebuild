@@ -30,7 +30,6 @@ export type TextPage = {
   hideTitleSep?: boolean;
   animatedTagline?: boolean;
   pulsingTagline?: string;
-  bottomTagline?: string;
 };
 
 export type ContactOffice = {
@@ -534,7 +533,7 @@ export const detailPages: Record<string, TextPage> = {
       "By consolidating disparate data sources into a **single, intelligent platform**, Leggero helps enterprises unlock deeper insights and drive **data-informed decision-making** across teams.",
     ],
     boldFirstParagraph: false,
-    bottomTagline: "Scalable Architecture. Advanced Visualizations. Low Total Cost of Ownership.",
+    pulsingTagline: "Scalable Architecture. Advanced Visualizations. Low Total Cost of Ownership.",
   },
   "/leggero-dynamic-data-source": {
     title: "Leggero Dynamic Data Source",

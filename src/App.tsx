@@ -733,9 +733,6 @@ function TextPageView({ page }: { page: TextPage }) {
       ) : (
         <PageContent page={page} />
       )}
-      {page.bottomTagline && (
-        <p className="pulsing-tagline bottom-tagline">{page.bottomTagline}</p>
-      )}
       <PageNav groups={[products, offerings, partnerPages, aboutPages]} />
     </Section>
   );

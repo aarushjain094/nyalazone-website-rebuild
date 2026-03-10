@@ -319,7 +319,22 @@ function HeroOrbitAnimation() {
           <circle cx="110" cy="110" r="90" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="5 5"/>
         </svg>
         <div className="orbit-center">
-          <div className="orbit-logo-o" />
+          <svg className="orbit-logo-o" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="20" stroke="#0c49a2" strokeWidth="2.5"/>
+            <clipPath id="zone-o-clip">
+              <circle cx="22" cy="22" r="19"/>
+            </clipPath>
+            <g clipPath="url(#zone-o-clip)" stroke="#d9293a" strokeWidth="2" strokeLinecap="round" fill="none">
+              <path d="M22 4 Q9 18 14 38"/>
+              <path d="M22 4 Q35 18 30 38"/>
+              <path d="M6 30 Q22 24 38 30"/>
+            </g>
+            <g fill="#d9293a">
+              <circle cx="22" cy="5" r="2.2"/>
+              <circle cx="13" cy="36" r="2.2"/>
+              <circle cx="31" cy="36" r="2.2"/>
+            </g>
+          </svg>
           <img src={logoUrl} alt="" className="orbit-center-logo"/>
         </div>
         {/* Unlocked lock - inner ring */}

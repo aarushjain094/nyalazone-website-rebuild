@@ -356,24 +356,26 @@ p {
   width: 110px;
   height: auto;
   mix-blend-mode: multiply;
-  animation: orbitLogoReveal 0.7s ease both;
-  animation-delay: 1.85s;
+  animation: orbitLogoReveal 0.8s ease both;
+  animation-delay: 2.2s;
 }
 
-/* Nyalazone O icon slides in from right, holds, fades out as logo appears */
+/* Nyalazone O — enters big, shrinks into its logo position, logo text fades in around it */
 .orbit-logo-o {
   position: absolute;
-  width: 52px;
-  height: 52px;
-  animation: orbitOEnter 2s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: 0.9s;
+  width: 20px;
+  height: 20px;
+  transform-origin: center;
+  animation: orbitOEnter 2.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.7s;
 }
 
 @keyframes orbitOEnter {
-  0%   { transform: translateX(80px); opacity: 0; }
-  25%  { transform: translateX(0);    opacity: 1; }
-  68%  { transform: translateX(0);    opacity: 1; }
-  100% { transform: translateX(0);    opacity: 0; }
+  0%   { transform: translate(0, 0) scale(3.2); opacity: 0; }
+  12%  { opacity: 1; }
+  46%  { transform: translate(0, 0) scale(3.2); opacity: 1; }
+  74%  { transform: translate(11px, 0) scale(1); opacity: 1; }
+  100% { transform: translate(11px, 0) scale(1); opacity: 0; }
 }
 
 @keyframes orbitLogoReveal {

@@ -366,6 +366,8 @@ p {
   width: 20px;
   height: 20px;
   transform-origin: center;
+  background: white;
+  border-radius: 50%;
   animation: orbitOEnter 2.2s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: 0.7s;
 }

@@ -320,21 +320,20 @@ function HeroOrbitAnimation() {
         </svg>
         <div className="orbit-center">
           <svg className="orbit-logo-o" viewBox="0 0 44 44" aria-hidden="true">
-            {/* Dark blue filled outer ring */}
             <circle cx="22" cy="22" r="21" fill="#0c49a2"/>
-            {/* White inner circle */}
-            <circle cx="22" cy="22" r="15" fill="white"/>
-            {/* Red arcs forming triangle network — arcs bow outward */}
-            <g stroke="#d9293a" strokeWidth="2" strokeLinecap="round" fill="none">
-              <path d="M22 9 Q3 15 11 29"/>
-              <path d="M22 9 Q41 15 33 29"/>
-              <path d="M11 29 Q22 40 33 29"/>
+            <circle cx="22" cy="22" r="14" fill="white"/>
+            <clipPath id="zone-o-inner">
+              <circle cx="22" cy="22" r="14"/>
+            </clipPath>
+            <g clipPath="url(#zone-o-inner)" stroke="#d9293a" strokeWidth="5.5" strokeLinecap="round" fill="none">
+              <path d="M22 10 Q3 12 10 30"/>
+              <path d="M22 10 Q41 12 34 30"/>
+              <path d="M10 30 Q22 39 34 30"/>
             </g>
-            {/* Dark blue nodes */}
             <g fill="#0c49a2">
-              <circle cx="22" cy="9"  r="2.6"/>
-              <circle cx="11" cy="29" r="2.6"/>
-              <circle cx="33" cy="29" r="2.6"/>
+              <circle cx="22" cy="10" r="3"/>
+              <circle cx="10" cy="30" r="3"/>
+              <circle cx="34" cy="30" r="3"/>
             </g>
           </svg>
           <img src={logoUrl} alt="" className="orbit-center-logo"/>

@@ -324,11 +324,11 @@ function HeroOrbitAnimation() {
             <circle cx="22" cy="22" r="21" fill="#0c49a2"/>
             {/* White inner circle */}
             <circle cx="22" cy="22" r="15" fill="white"/>
-            {/* Red arcs forming triangle network */}
+            {/* Red arcs forming triangle network — arcs bow outward */}
             <g stroke="#d9293a" strokeWidth="2" strokeLinecap="round" fill="none">
-              <path d="M22 9 Q16 21 11 29"/>
-              <path d="M22 9 Q28 21 33 29"/>
-              <path d="M11 29 Q22 26 33 29"/>
+              <path d="M22 9 Q3 15 11 29"/>
+              <path d="M22 9 Q41 15 33 29"/>
+              <path d="M11 29 Q22 40 33 29"/>
             </g>
             {/* Dark blue nodes */}
             <g fill="#0c49a2">

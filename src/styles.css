@@ -388,14 +388,7 @@ p {
   height: 100%;
 }
 
-.orbit-gear-svg {
-  animation: spinGear 7s linear infinite;
-}
 
-@keyframes spinGear {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
 
 .hero-orbit-caption {
   text-align: center;
@@ -857,7 +850,7 @@ h3 {
   border-bottom: 1px solid #d3e4f4;
 }
 
-/* Offerings page — horizontal card layout */
+/* Offerings page - horizontal card layout */
 .offerings-section .card-grid {
   grid-template-columns: 1fr 1fr;
 }

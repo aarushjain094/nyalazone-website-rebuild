@@ -138,7 +138,7 @@ export const capabilityCards = [
   {
     title: "Flexible Customization",
     description:
-      "No two organizations are alike. Our platforms are built to bend — not break — adapting to your workflows, data structures, and business logic without compromising performance.",
+      "No two organizations are alike. Our platforms are built to bend, not break, adapting to your workflows, data structures, and business logic without compromising performance.",
   },
   {
     title: "Enterprise-Grade Solutions",
@@ -434,21 +434,21 @@ export const resources: ResourceItem[] = [
     title: "AI Lead Management",
     headline: "Turn Every Interaction into an Opportunity",
     description:
-      "Captures and organizes leads from multiple channels — social media, campaigns, websites, calls, and events — into a unified platform. Features drag-and-drop pipeline management, automated activities, and real-time analytics to help teams convert prospects into customers.",
+      "Captures and organizes leads from multiple channels (social media, campaigns, websites, calls, and events) into a unified platform. Features drag-and-drop pipeline management, automated activities, and real-time analytics to help teams convert prospects into customers.",
     videoUrl: "https://nyalazone.ai/wp-content/uploads/2025/10/Lead-Management.mp4",
   },
   {
     title: "Document Classifier",
     headline: "Intelligence that Organizes Itself",
     description:
-      "An AI-powered solution that automatically identifies, sorts, and validates documents upon receipt. Leverages contextual understanding to route files to the appropriate workflows instantly — eliminating manual sorting, reducing errors, and enabling RPA integration.",
+      "An AI-powered solution that automatically identifies, sorts, and validates documents upon receipt. Leverages contextual understanding to route files to the appropriate workflows instantly, eliminating manual sorting, reducing errors, and enabling RPA integration.",
     videoUrl: "https://nyalazone.ai/wp-content/uploads/2025/10/Doc-Classifier.mp4",
   },
   {
     title: "Meeting Module",
     headline: "Unlock Smarter Meetings with AI",
     description:
-      "Transforms organizational collaboration through automated scheduling, attendance tracking, AI-generated meeting minutes, and automatic task assignments — designed to convert meetings into measurable outcomes.",
+      "Transforms organizational collaboration through automated scheduling, attendance tracking, AI-generated meeting minutes, and automatic task assignments, designed to convert meetings into measurable outcomes.",
     videoUrl: "https://nyalazone.ai/wp-content/uploads/2025/10/NZ-Meeting-Module-1-1.mp4",
   },
 ];

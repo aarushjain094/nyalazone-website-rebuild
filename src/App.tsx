@@ -1,4 +1,5 @@
 ﻿import { Fragment, ReactNode, useEffect, useRef, useState } from "react";
+import nyalazoneO from "./assets/nyalazone-o.jpg";
 
 const partnerPages = [
   { title: "Our Partner Program", to: "/our-partner-program" },
@@ -319,23 +320,7 @@ function HeroOrbitAnimation() {
           <circle cx="110" cy="110" r="90" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="5 5"/>
         </svg>
         <div className="orbit-center">
-          <svg className="orbit-logo-o" viewBox="0 0 44 44" aria-hidden="true">
-            <circle cx="22" cy="22" r="21" fill="#0c49a2"/>
-            <circle cx="22" cy="22" r="14" fill="white"/>
-            <clipPath id="zone-o-inner">
-              <circle cx="22" cy="22" r="14"/>
-            </clipPath>
-            <g clipPath="url(#zone-o-inner)" stroke="#d9293a" strokeWidth="5.5" strokeLinecap="round" fill="none">
-              <path d="M22 10 Q3 12 10 30"/>
-              <path d="M22 10 Q41 12 34 30"/>
-              <path d="M10 30 Q22 39 34 30"/>
-            </g>
-            <g fill="#0c49a2">
-              <circle cx="22" cy="10" r="3"/>
-              <circle cx="10" cy="30" r="3"/>
-              <circle cx="34" cy="30" r="3"/>
-            </g>
-          </svg>
+          <img src={nyalazoneO} alt="" className="orbit-logo-o" aria-hidden="true"/>
           <img src={logoUrl} alt="" className="orbit-center-logo"/>
         </div>
         {/* Unlocked lock - inner ring */}

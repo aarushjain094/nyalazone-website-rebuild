@@ -1,5 +1,23 @@
 ﻿import { Fragment, ReactNode, useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import nyalazoneO from "./assets/nyalazone-o.jpg";
+
+const productRelatedOfferings: Record<string, { label: string; to: string }[]> = {
+  "/leggero-data-management-analytics-platform": [
+    { label: "Advanced Data Integration", to: "/advanced-data-integration-platforms" },
+    { label: "Audit & Risk Compliance", to: "/audit-and-risk-compliance" },
+  ],
+  "/leggero-dynamic-data-source": [
+    { label: "Complex Data Migration", to: "/complex-data-migration" },
+    { label: "Gen-AI Process Automation", to: "/gen-ai-enabled-process-automation" },
+  ],
+  "/digital-customer-engagement-platform": [
+    { label: "Omnichannel Engagement", to: "/omnichannel-customer-engagement" },
+    { label: "Operations Management", to: "/operations-management-using-activity-orchestration" },
+    { label: "Audit & Risk Compliance", to: "/audit-and-risk-compliance" },
+    { label: "Gen-AI Process Automation", to: "/gen-ai-enabled-process-automation" },
+  ],
+};
 
 const partnerPages = [
   { title: "Our Partner Program", to: "/our-partner-program" },
@@ -20,6 +38,7 @@ const heroTitles = [
 
 const breadcrumbMap: Record<string, { label: string; to: string }[]> = {
   "/products": [{ label: "Products", to: "/products" }],
+  "/product-suite": [{ label: "Products", to: "/products" }, { label: "Product Suite", to: "/product-suite" }],
   "/offerings": [{ label: "Offerings", to: "/offerings" }],
   "/partners": [{ label: "Partners", to: "/partners" }],
   "/about-us": [{ label: "About Us", to: "/about-us" }],
@@ -48,6 +67,7 @@ import {
   certificationsPage,
   contactOffices,
   contactPage,
+  pageSEOMeta,
   detailPages,
   globalTeamMembers,
   homeHero,
@@ -57,6 +77,8 @@ import {
   partnerProgramPage,
   products,
   productsIntro,
+  productSuiteItems,
+  type ProductSuiteItem,
   resources,
   resourcesIntro,
   type ResourceItem,
@@ -72,16 +94,35 @@ function ScrollToTop() {
   return null;
 }
 
+function SEOHead() {
+  const { pathname } = useLocation();
+  const meta = pageSEOMeta[pathname];
+  const title = meta?.title ?? "Nyalazone";
+  const description = meta?.description ?? "Nyalazone builds AI, analytics, and digital engagement products for enterprise transformation.";
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+      <link rel="canonical" href={`https://nyalazone.ai${pathname}`} />
+    </Helmet>
+  );
+}
+
 function App() {
   return (
     <div className="site-shell">
       <ScrollToTop />
+      <SEOHead />
       <Header />
       <main className="page-wrap">
         <BreadcrumbBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsQuadrantPage />} />
+          <Route path="/product-suite" element={<ProductSuitePage />} />
           <Route
             path="/offerings"
             element={<CollectionPage title="Offerings" intro={offeringsIntro} items={offerings} className="section-vivid offerings-section" />}
@@ -150,9 +191,9 @@ function Header() {
             return (
               <div
                 key={item.to}
-                className="nav-item-with-menu"
+                className={`nav-item-with-menu${openMenu === item.to ? " open" : ""}`}
                 onMouseEnter={() => setOpenMenu(item.to)}
-                onMouseLeave={() => setOpenMenu((current) => (current === item.to ? null : current))}
+                onMouseLeave={() => setOpenMenu(null)}
               >
                 <NavLink
                   to={item.to}
@@ -170,7 +211,7 @@ function Header() {
                   </svg>
                 </NavLink>
                 <div
-                  className={openMenu === item.to ? "dropdown-menu dropdown-menu-open" : "dropdown-menu"}
+                  className={`dropdown-menu${openMenu === item.to ? " dropdown-menu-open" : ""}`}
                   role="menu"
                   aria-label={`${item.label} menu`}
                 >
@@ -481,23 +522,52 @@ function ProductsQuadrantPage() {
     <Section title="Products">
       <p className="lead detail-copy">{productsIntro}</p>
       <div className="products-quadrant">
-        {products.map((item) => (
-          <Link key={`quadrant-${item.title}`} to={item.to} className="quadrant-link">
-            <article className="quadrant-sector">
-              <div className="quadrant-logo-wrap">
-                {item.logoUrl ? (
-                  <img src={item.logoUrl} alt={`${item.title} logo`} className="quadrant-logo product-logo-blend" />
-                ) : (
-                  <div className="image-placeholder small">Image Placeholder</div>
-                )}
-              </div>
-              <div className="quadrant-text">
-                <h3>{item.title}</h3>
-                {item.description && <p>{item.description}</p>}
-                <span className="learn-more-btn">Learn More</span>
-              </div>
+        {products.map((item) => {
+          const relatedOfferings = productRelatedOfferings[item.to] ?? [];
+          return (
+            <article key={`quadrant-${item.title}`} className="quadrant-sector">
+              <Link to={item.to} className="quadrant-link">
+                <div className="quadrant-logo-wrap">
+                  {item.logoUrl ? (
+                    <img src={item.logoUrl} alt={`${item.title} logo`} className="quadrant-logo product-logo-blend" />
+                  ) : (
+                    <div className="image-placeholder small">Image Placeholder</div>
+                  )}
+                </div>
+                <div className="quadrant-text">
+                  <h3>{item.title}</h3>
+                  {item.description && <p>{item.description}</p>}
+                  <span className="learn-more-btn">Learn More</span>
+                </div>
+              </Link>
+              {relatedOfferings.length > 0 && (
+                <div className="quadrant-offerings">
+                  <span className="quadrant-offerings-label">Offerings:</span>
+                  {relatedOfferings.slice(0, 2).map((o) => (
+                    <Link key={o.to} to={o.to} className="offering-chip offering-chip-sm">{o.label}</Link>
+                  ))}
+                </div>
+              )}
             </article>
-          </Link>
+          );
+        })}
+      </div>
+    </Section>
+  );
+}
+
+function ProductSuitePage() {
+  return (
+    <Section title="Product Suite">
+      <div className="suite-grid">
+        {productSuiteItems.map((item: ProductSuiteItem) => (
+          <div key={item.to} className="suite-tile">
+            <div className="suite-logo-wrap">
+              <img src={item.logoUrl} alt={`${item.shortTitle} logo`} className="suite-logo product-logo-blend" />
+            </div>
+            <Link to={item.to} className="suite-title">{item.shortTitle}</Link>
+            <p className="suite-description">{renderRichText(item.description)}</p>
+          </div>
         ))}
       </div>
     </Section>
@@ -591,6 +661,7 @@ function AnimatedTagline({ text }: { text: string }) {
 
 function PageContent({ page }: { page: TextPage }) {
   const hasImages = (page.paragraphImages?.length ?? 0) > 0;
+  const hasSections = (page.paragraphSections?.length ?? 0) > 0;
 
   const paragraphNodes = page.paragraphs?.map((paragraph, index) => {
     if (page.animatedTagline && index === 0) {
@@ -619,7 +690,44 @@ function PageContent({ page }: { page: TextPage }) {
 
   return (
     <div className={page.contentClassName ?? ""}>
-      {hasImages ? (
+      {hasSections && hasImages ? (
+        <>
+          {page.pulsingTagline && <AnimatedTagline text={page.pulsingTagline} />}
+          {page.animatedTagline && page.paragraphs?.[0] && <AnimatedTagline text={page.paragraphs[0]} />}
+          <div className="para-section-rows">
+            {page.paragraphSections!.map((section, index) => (
+              <div key={section.heading} className="para-section-row">
+                <div className="para-section-text">
+                  <h3 className="para-section-heading">{section.heading}</h3>
+                  <ul className="bullet-list">
+                    {section.bullets.map((b) => <li key={b}>{renderRichText(b)}</li>)}
+                  </ul>
+                </div>
+                {page.paragraphImages![index] && (
+                  <div className="para-section-image">
+                    <img src={page.paragraphImages![index]} alt="" className="para-col-img" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </>
+      ) : hasSections ? (
+        <>
+          {page.pulsingTagline && <AnimatedTagline text={page.pulsingTagline} />}
+          {page.animatedTagline && page.paragraphs?.[0] && <AnimatedTagline text={page.paragraphs[0]} />}
+          <div className="para-section-stack">
+            {page.paragraphSections!.map((section) => (
+              <div key={section.heading} className="para-section-block">
+                <h3 className="para-section-heading">{section.heading}</h3>
+                <ul className="bullet-list">
+                  {section.bullets.map((b) => <li key={b}>{renderRichText(b)}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : hasImages ? (
         <>
           {/* Desktop: original two-column layout */}
           <div className={`para-columns para-columns-desktop${page.paragraphImageClassName ? ` ${page.paragraphImageClassName}` : ""}`}>
@@ -703,6 +811,8 @@ function PageNav({ groups }: { groups: { title: string; to: string }[][] }) {
 }
 
 function TextPageView({ page }: { page: TextPage }) {
+  const location = useLocation();
+  const poweredOfferings = productRelatedOfferings[location.pathname] ?? [];
   const titleNode = page.headerLogoUrl
     ? <img src={page.headerLogoUrl} alt={page.title} className="section-header-logo" />
     : page.logoUrl
@@ -735,6 +845,16 @@ function TextPageView({ page }: { page: TextPage }) {
         </div>
       ) : (
         <PageContent page={page} />
+      )}
+      {poweredOfferings.length > 0 && (
+        <div className="powered-offerings">
+          <span className="powered-offerings-label">Powers these offerings:</span>
+          <div className="powered-offerings-chips">
+            {poweredOfferings.map((o) => (
+              <Link key={o.to} to={o.to} className="offering-chip">{o.label}</Link>
+            ))}
+          </div>
+        </div>
       )}
       <PageNav groups={[products, offerings, partnerPages, aboutPages]} />
     </Section>

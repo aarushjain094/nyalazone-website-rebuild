@@ -19,6 +19,7 @@ export type TextPage = {
   paragraphs?: string[];
   bullets?: string[];
   sections?: { heading: string; bullets: string[] }[];
+  paragraphSections?: { heading: string; bullets: string[] }[];
   trailingParagraphs?: string[];
   imageUrl?: string;
   headerLogoUrl?: string;
@@ -55,6 +56,7 @@ export const navItems: NavItem[] = [
     label: "Products",
     to: "/products",
     children: [
+      { label: "Product Suite", to: "/product-suite" },
       { label: "Leggero Data Management and Analytics Platform", to: "/leggero-data-management-analytics-platform" },
       { label: "Leggero Dynamic Data Source", to: "/leggero-dynamic-data-source" },
       { label: "Digital Customer Engagement Platform", to: "/digital-customer-engagement-platform" },
@@ -144,6 +146,45 @@ export const capabilityCards = [
     title: "Enterprise-Grade Solutions",
     description:
       "Built for the demands of large-scale operations: robust security, high availability, and the kind of reliability that mission-critical environments require.",
+  },
+];
+
+export type ProductSuiteItem = {
+  shortTitle: string;
+  title: string;
+  to: string;
+  logoUrl: string;
+  description: string;
+};
+
+export const productSuiteItems: ProductSuiteItem[] = [
+  {
+    shortTitle: "Leggero.ai",
+    title: "Leggero.ai",
+    to: "/leggero-ai",
+    logoUrl: "https://nyalazone.ai/wp-content/uploads/2026/02/Leggeri.ai_.png",
+    description: "Leggero.ai is an **AI-native analytics platform** that transforms enterprise data into **immediate, decision-ready insight**. You can ask questions in natural language, generate dynamic visualisations, and uncover trends in seconds. Built on a scalable warehouse architecture, it ensures governed, real-time intelligence across the organization. Leggero.ai **empowers leaders to move from data to decisive action**.",
+  },
+  {
+    shortTitle: "Leggero DCE",
+    title: "Digital Customer Engagement Platform",
+    to: "/digital-customer-engagement-platform",
+    logoUrl: "https://nyalazone.ai/wp-content/uploads/2026/01/Group-11.png",
+    description: "Leggero Digital Customer Engagement (DCE) is an intelligent engagement platform designed to **orchestrate seamless digital interactions at scale**. It connects communication flows, automates workflows, and delivers real-time operational visibility. DCE utilizes **advanced analytics** to enable organizations to elevate experience, efficiency, and long-term value creation.",
+  },
+  {
+    shortTitle: "Leggero DDS",
+    title: "Leggero Dynamic Data Source",
+    to: "/leggero-dynamic-data-source",
+    logoUrl: "https://nyalazone.ai/wp-content/uploads/2026/01/Group-12.png",
+    description: "Leggero Dynamic Data Source (DDS) is a high-performance data integration and transformation engine built for modernization at scale. It enables **real-time migration, intelligent cleansing, and rule-driven transformation** across complex systems. Its in-memory architecture ensures **precision, speed, and operational continuity**. DDS accelerates enterprise transformation while safeguarding data integrity.",
+  },
+  {
+    shortTitle: "Leggero DMAP",
+    title: "Leggero Data Management and Analytics Platform",
+    to: "/leggero-data-management-analytics-platform",
+    logoUrl: "https://nyalazone.ai/wp-content/uploads/2026/01/Group-13.png",
+    description: "Leggero Data Management & Analytics Platform (DMAP) brings structured and unstructured data together into a **unified, enterprise-grade foundation**. It ingests, harmonizes, and scales multi-terabyte environments with distributed processing power. Advanced analytics and visual intelligence convert fragmented information into strategic clarity. DMAP establishes a **trusted data backbone** that **drives transparency, control, and growth**.",
   },
 ];
 
@@ -332,7 +373,7 @@ export const teamPage: TextPage = {
 };
 
 export const teamGlobalPresence =
-  "Nyalazone is a **product-based company** with a strong **global footprint**. With development centers in India and Canada, and a broad network of global partners, we serve businesses worldwide by delivering innovative solutions and localized support.";
+  "Nyalazone is a product-based company with a strong global footprint. With development centers in India and Canada, and a broad network of global partners, we serve businesses worldwide by delivering innovative solutions and localized support. Our R&D team is spread across various geographies, focused on continuously developing cutting-edge technologies that drive progress. Backed by a talented team of engineers, data scientists, and industry experts, we are committed to providing world-class support and delivering exceptional value to every client.";
 
 export const teamMembers: TeamMember[] = [
   {
@@ -370,8 +411,8 @@ export const globalTeamMembers: TeamMember[] = [
     role: "Founder & CEO, Nyalazone International",
     imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/About_Team_1-650x650.png",
     paragraphs: [
-      "Over 30 years of global industry experience delivering transformative solutions for government agencies and enterprises.",
-      "Previously held senior roles at Tech Mahindra, IBM, Siemens, and HCL. Led digital transformation initiatives and AI implementations, known for turning strategic ideas into high-performing solutions.",
+      "Saurabh brings three decades of worldwide industry experience to his leadership role. He previously held senior positions at Tech Mahindra, IBM, Siemens, and HCL.",
+      "Throughout his tenure, he spearheaded major digital transformation initiatives affecting government and corporate sectors, from national infrastructure modernization to artificial intelligence deployments. Known for pragmatic strategy merged with technical acumen, Saurabh converts ambitious visions into functional, results-driven answers. His technique integrates extensive sector knowledge with steadfast dedication to implementation, guaranteeing technology surpasses targets while generating measurable business progress.",
     ],
     to: "/saurabh-kumar",
     linkedinUrl: "https://www.linkedin.com/in/saurabhnyalazone/",
@@ -381,8 +422,8 @@ export const globalTeamMembers: TeamMember[] = [
     role: "Head of Technology, Nyalazone Solutions",
     imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/About_Team_2-650x650.png",
     paragraphs: [
-      "Based in Canada, oversees technological innovation and product roadmap execution.",
-      "Brings expertise in seamless solution delivery and tech strategy. Has a passion for filmmaking and animation, allowing him to approach technology with a creative and imaginative perspective.",
+      "Operating from Canada, Aneesh directs technological advancement and product development execution. He manages ongoing technological initiatives while guiding teams through tactical decisions and operational challenges. His responsibilities encompass ensuring smooth implementation of advanced answers aligned with organizational objectives.",
+      "Beyond technical competencies, Aneesh maintains serious engagement in filmmaking and animation. This imaginative foundation enables novel methodology toward innovation. His dual concentration on creative expression and technical knowledge cultivates originality and precision across organizational operations.",
     ],
     to: "/aneesh-kumar-bhola",
     linkedinUrl: "https://www.linkedin.com/in/aneesh-k-bhola/",
@@ -392,8 +433,8 @@ export const globalTeamMembers: TeamMember[] = [
     role: "Head of Client Relations and Systems, Nyalazone Solutions",
     imageUrl: "https://nyalazone.ai/wp-content/uploads/elementor/thumbs/About_Team_3_2-scaled-r3utgaftkaf9ph7h53yr9nbsq3t8r3shi9lliutzww.jpg",
     paragraphs: [
-      "Over a decade of enterprise software delivery experience. Champions collaboration and cross-functional team leadership aligned with business needs.",
-      "Football enthusiast who values teamwork and adaptability, committed to building systems that deliver real value for clients.",
+      "Arnab has directed this position since organizational founding. His history encompasses ten-plus years providing enterprise software implementations. He merges uncommon technical comprehension with business-centered methodology in all endeavors.",
+      "Throughout his background, he championed cooperation, supervised productive interdisciplinary organizations, and persistently matched company requirements with manageable, meaningful answers. Arnab champions human empowerment plus organizational cultures emphasizing continued development, originality, and responsibility. An ardent soccer devotee, Arnab applies competitive ideals — cooperation, technique, flexibility — to management philosophy. He stays devoted to constructing mechanisms benefiting users while producing authentic client advantage.",
     ],
     to: "/arnab-sharma",
     linkedinUrl: "https://www.linkedin.com/in/arnab-sharma-434166b8/",
@@ -499,13 +540,32 @@ export const detailPages: Record<string, TextPage> = {
       "https://nyalazone.ai/wp-content/uploads/2026/02/ChatGPT-Image-Feb-20-2026-05_14_45-PM-1024x683.png",
       "https://nyalazone.ai/wp-content/uploads/2026/02/ChatGPT-Image-Feb-20-2026-05_35_18-PM-1024x683.png",
     ],
-    paragraphs: [
-      "Leggero.ai is an **AI-first business intelligence platform** built on an enterprise data warehouse foundation, designed for organizations that demand **clarity, speed, and control**.",
-      "It transforms **natural language into governed analytical models**, ensuring that every query operates within structured business definitions and **trusted data architecture**.",
-      "By aligning physical warehouse structure with semantic intelligence, Leggero.ai delivers insight that is not only fast - but **consistent, explainable, and enterprise-ready**.",
-      "At its core, Leggero.ai unifies **AI-powered cross-tab intelligence**, **adaptive visual analytics**, and **reusable analytical models** into one seamless flow.",
-      "Questions evolve into **structured datasets**, multidimensional analysis surfaces patterns instantly, and intelligent visualizations present results with precision.",
-      "Built for **mission-critical environments**, Leggero.ai balances innovation with governance. It operates securely at **warehouse scale**, maintains business logic integrity, and ensures that every insight can be **traced back to its source**.",
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "An **AI-first business intelligence platform** built on an enterprise data warehouse foundation",
+          "Transforms **natural language into governed analytical models**",
+          "Designed for organizations that demand **clarity, speed, and control**",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "Unifies **AI-powered cross-tab intelligence**, **adaptive visual analytics**, and **reusable analytical models**",
+          "Questions evolve into **structured datasets**, surfacing multidimensional patterns instantly",
+          "Intelligent visualizations present results with clarity and precision",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Every query operates within structured business definitions and **trusted data architecture**",
+          "Built for **mission-critical environments** — secure, scalable, and explainable",
+          "Operates at **warehouse scale** while maintaining business logic integrity",
+          "Every insight can be **traced back to its source**",
+        ],
+      },
     ],
     boldFirstParagraph: false,
   },
@@ -523,14 +583,34 @@ export const detailPages: Record<string, TextPage> = {
       "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DMAP_2-1024x694.png",
       "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DMAP_3-1024x683.png",
     ],
-    paragraphs: [
-      "Leggero Data Management & Analytics Platform (DMAP) is a comprehensive solution that enables organizations to seamlessly store, access, homogenize, and analyze data from **diverse sources and formats**.",
-      "The platform can efficiently manage **multiple terabytes of data** and support a continuous inflow of information. It transforms **raw, fragmented, and unstructured data** - including text and XML files - into unified datasets that can be used for real-time reporting, historical analysis, and advanced modeling.",
-      "Whether deployed on **cloud infrastructure or dedicated hardware**, Leggero provides the flexibility to adapt to your enterprise's specific implementation needs.",
-      "The system supports **end-to-end data lifecycle management** - from data ingestion and storage to metadata management, transformation, and advanced analytics. It offers **distributed computing capabilities** to support big data processing and can be scaled in a clustered environment for high-volume workloads.",
-      "Its visual layer enables users to create **interactive reports and dashboards** using configurable charts and graphs - pie, bar, area, time series, and more - tailored to roles and permissions.",
-      "Unlike traditional data warehouses, Leggero is **not bound by rigid schema definitions**, allowing for **dynamic and flexible data exploration**.",
-      "By consolidating disparate data sources into a **single, intelligent platform**, Leggero helps enterprises unlock deeper insights and drive **data-informed decision-making** across teams.",
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "A comprehensive platform for storing, accessing, and analyzing data from **diverse sources and formats**",
+          "Manages **multiple terabytes of data** with support for continuous inflow",
+          "Handles structured and unstructured data — including text and XML files",
+          "Deploys on **cloud infrastructure or dedicated hardware**",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "End-to-end data lifecycle management: ingestion, storage, metadata, transformation, and analytics",
+          "**Distributed computing** for big data and high-volume clustered workloads",
+          "Interactive reports and dashboards — pie, bar, area, time series, and more",
+          "Dynamic, schema-free data exploration — **not bound by rigid schema definitions**",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Consolidates disparate data sources into a **single, intelligent platform**",
+          "Role-based, permission-aware visualizations tailored to your teams",
+          "Drives **data-informed decision-making** across the enterprise",
+          "Lower total cost of ownership versus traditional data warehouses",
+        ],
+      },
     ],
     boldFirstParagraph: false,
     pulsingTagline: "Scalable Architecture. Advanced Visualizations. Low Total Cost of Ownership.",
@@ -549,19 +629,34 @@ export const detailPages: Record<string, TextPage> = {
       "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DDS_2-1024x673.png",
       "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DDS_3-1024x654.png",
     ],
-    contentClassName: "dds-content-compact",
-    paragraphs: [
-      "Leggero Dynamic Data Source (DDS) is Nyalazone's **powerful data engineering, integration and transformation platform** designed to address the complexities of **large-scale data migration and modernization initiatives**.",
-      "The platform enables **real-time integration, iterative cleansing, and intelligent transformation** of data from multiple sources - both structured and unstructured. Its **flexible configuration engine** allows users to define and persist complex integration and transformation rules tailored to unique migration workflows.",
-      "At the platform's foundation is a **proprietary in-memory database engine** called \"Data Objects,\" which accelerates processing by storing commonly used data structures for transformations, mappings, and cleansing routines.",
-    ],
-    bullets: [
-      "**Computed Columns**: merges multiple input attributes from source entities to derive clean, consolidated outputs",
-      "**Fuzzy Logic and Pattern Matching** for enhanced data accuracy",
-      "**Built-in intelligence layer** and AI-ready architecture",
-      "Support for **dataset generation for Large Language Models (LLMs)**",
-      "**Generative AI capabilities** to extract contextually rich insights from text-heavy documents",
-      "Out-of-the-box **API configurator** for seamless external data source connectivity",
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "A powerful data engineering, integration, and transformation platform",
+          "Designed for **large-scale data migration and modernization** initiatives",
+          "Integrates data from **multiple structured and unstructured sources** in real time",
+          "Out-of-the-box **API configurator** for seamless external data source connectivity",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "**Proprietary in-memory engine** (\"Data Objects\") for high-speed transformations and mappings",
+          "**Computed Columns**: merges multiple source attributes into clean, consolidated outputs",
+          "**Fuzzy Logic and Pattern Matching** for intelligent deduplication and data accuracy",
+          "Configurable, persistent transformation rules tailored to unique migration workflows",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "**Built-in intelligence layer** designed for AI and ML workloads",
+          "Support for **dataset generation for Large Language Models (LLMs)**",
+          "**Generative AI capabilities** to extract structured insights from text-heavy documents",
+          "Reduces manual data prep effort and accelerates migration cycles",
+        ],
+      },
     ],
     boldFirstParagraph: false,
   },
@@ -579,13 +674,33 @@ export const detailPages: Record<string, TextPage> = {
       "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DCE_3-1024x690.png",
       "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DCE_4-1024x682.png",
     ],
-    paragraphs: [
-      "Digital Customer Engagement (DCE) is Nyalazone's **enterprise-grade platform** designed to unify and streamline engagement across customers, internal teams, and external partners.",
-      "Built for **complex, multi-stakeholder ecosystems**, DCE enables organizations to deliver **consistent, intelligent, and contextual interactions** across all touchpoints. With **powerful omni-channel integration**, the platform supports real-time communication through web, mobile, email, SMS, and WhatsApp.",
-      "At the heart of DCE is an **intelligent workflow engine** that enables advanced automation and decision-making. Using task groups and task instances, organizations can orchestrate **structured, rule-driven processes** across teams, powered by AI-enabled rule engines.",
-      "DCE features an **advanced notification engine** that drives timely alerts, reminders, and escalations across channels. Marketing and engagement teams can create and launch **targeted campaigns** through email, SMS, and WhatsApp.",
-      "DCE also provides a robust foundation for **enterprise knowledge and content management**. The integrated Knowledge Management module supports **semantic search and AI-powered recommendations**.",
-      "By bringing together engagement, automation, collaboration, and intelligence, DCE empowers enterprises to deliver **seamless, personalized experiences** powered by Generative AI and Deep Learning.",
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "An enterprise-grade platform for unifying engagement across customers, teams, and partners",
+          "Supports real-time communication through **web, mobile, email, SMS, and WhatsApp**",
+          "Built for **complex, multi-stakeholder ecosystems**",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "Orchestrates **structured, rule-driven processes** using task groups and task instances",
+          "**Advanced notification engine** for timely alerts, reminders, and escalations across channels",
+          "Enables **targeted campaign** creation and launch via email, SMS, and WhatsApp",
+          "Integrated **Knowledge Management** module with semantic search and AI-powered recommendations",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Delivers **consistent, intelligent, and contextual interactions** across all touchpoints",
+          "Powered by **AI-enabled rule engines** for automated decision-making",
+          "Empowers **seamless, personalized experiences** powered by Generative AI and Deep Learning",
+          "Eliminates fragmented communication across departments and channels",
+        ],
+      },
     ],
     boldFirstParagraph: false,
   },
@@ -598,12 +713,34 @@ export const detailPages: Record<string, TextPage> = {
       { value: "AI / ML-Ready", label: "Dataset Output" },
     ],
     imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_adv_data.png",
-    paragraphs: [
-      "Purpose-Built Integration. Unified Intelligence. Scalable by Design.",
-      "In today's fragmented data landscape, organizations require more than standard ETL tools - they need a **flexible, intelligent, and scalable Data Integration Platform** that connects systems, harmonizes data, and drives business-ready insights. Nyalazone's **DDS (Dynamic Data Source) and Leggero Data Management & Analytics Platform** work in tandem to deliver exactly that: a purpose-built, enterprise-grade DIP tailored for both operational agility and analytical depth.",
-      "At the integration layer, **DDS serves as the powerhouse for real-time data ingestion**, transformation, and unification across multiple, disparate sources. It supports complex integration logic with features like **in-memory processing, fuzzy matching, pattern recognition, and computed columns**. DDS also offers flexible APIs and native support for structured and unstructured data - ensuring seamless, rule-driven integration and preparation of **high-quality, AI-ready datasets**.",
-      "Layered with DDS, **Leggero brings advanced capabilities in data storage, semantic enrichment, governance, and analytics**. It enables the centralized management of structured data, supports large-scale distributed processing, and transforms raw datasets into **actionable intelligence** through interactive dashboards, advanced visualizations, and AI-powered modeling tools.",
-      "Together, **DDS and Leggero form a comprehensive, future-ready Data Integration Platform** that adapts to your organization's evolving data ecosystem. This integrated stack delivers the **performance, intelligence, and flexibility** required to turn complex data into strategic advantage.",
+    paragraphs: ["Purpose-Built Integration. Unified Intelligence. Scalable by Design."],
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "A purpose-built **Data Integration Platform** combining DDS and Leggero DMAP",
+          "Designed for organizations with fragmented data environments and complex integration needs",
+          "Supports both **operational agility** and **analytical depth**",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "**DDS** enables real-time ingestion, transformation, and unification across disparate sources",
+          "**In-memory processing, fuzzy matching, pattern recognition, and computed columns** for intelligent integration",
+          "**Leggero** centralizes storage, semantic enrichment, governance, and analytics",
+          "Transforms raw datasets into **actionable intelligence** through dashboards and AI-powered modeling",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Turns complex, fragmented data into a **strategic asset**",
+          "Flexible APIs with native support for structured and unstructured data",
+          "Delivers **high-quality, AI-ready datasets** for downstream analytics and ML workflows",
+          "Adapts to your **evolving data ecosystem** — cloud, on-prem, or hybrid",
+        ],
+      },
     ],
     boldFirstParagraph: false,
   },
@@ -616,12 +753,34 @@ export const detailPages: Record<string, TextPage> = {
       { value: "Multi-Channel", label: "Alerts & Escalations" },
     ],
     imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_audit_risk.jpg",
-    paragraphs: [
-      "Structured Workflows. Intelligent Oversight. Actionable Insights.",
-      "Managing audit findings and mitigating risk requires a system that ensures accountability, transparency, and timely resolution. Nyalazone's **Digital Customer Engagement (DCE) platform** delivers exactly that - an **intelligent workflow system** that streamlines the end-to-end audit management process across departments and regions.",
-      "With DCE, organizations can **log, categorize, and assign audit findings** using configurable workflows and automated rule engines. Action items are generated, routed to the right teams, and tracked through their **entire lifecycle** - with ownership, status, and escalation paths clearly defined. Notifications across channels like email, SMS, and WhatsApp ensure timely alerts, while a **role-based access model** upholds data integrity and control.",
-      "Paired with **Leggero, our advanced analytics platform**, the solution offers **real-time dashboards and automated reporting** for audit progress, overdue actions, and team performance. Stakeholders get a unified view of audit resolution across functions, enabling faster decisions and continuous compliance.",
-      "Together, **DCE and Leggero form a powerful framework for Audit and Risk Compliance** - ensuring structured resolution, collaborative execution, and **data-backed governance**.",
+    paragraphs: ["Structured Workflows. Intelligent Oversight. Actionable Insights."],
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "An **intelligent audit and risk management system** built on Nyalazone's DCE platform",
+          "Designed to ensure **accountability, transparency, and timely resolution** across departments",
+          "Combines **workflow automation** with real-time analytics via Leggero",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "**Logs, categorizes, and assigns audit findings** with configurable workflows and automated rule engines",
+          "Tracks action items through their **entire lifecycle** with clear ownership and escalation paths",
+          "Sends alerts via **email, SMS, and WhatsApp** to ensure timely action",
+          "Delivers **real-time dashboards and automated reporting** on audit progress and team performance",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Unified view of audit resolution across functions — enabling **faster decisions**",
+          "**Role-based access model** upholds data integrity and control",
+          "Eliminates manual follow-up with **automated escalation and notification workflows**",
+          "Backed by Leggero analytics for **continuous compliance monitoring**",
+        ],
+      },
     ],
     boldFirstParagraph: false,
   },
@@ -634,13 +793,34 @@ export const detailPages: Record<string, TextPage> = {
       { value: "In-Memory", label: "High-Speed Processing" },
     ],
     imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_data_mig_1024.png",
-    paragraphs: [
-      "Precision. Performance. AI-Powered at Scale.",
-      "Data migrations in modern enterprises demand more than just data transfer - they require intelligent handling of legacy systems, inconsistent formats, and dynamic transformation logic. **Nyalazone's Dynamic Data Source (DDS) is engineered for these complexities**, offering deep configuration capabilities for **attribute- and instance-level transformations**, seamless multi-source integration, and rule-driven data restructuring.",
-      "DDS supports advanced migration workflows with features like **fuzzy logic matching, pattern recognition, computed columns, and multi-source joins** - essential for deduplication, standardization, and complex entity mappings. Its **proprietary in-memory processing engine** accelerates transformation cycles, enabling real-time validation and iterative cleansing with high performance.",
-      "The built-in **API configurator** allows external APIs to act as live data sources, expanding flexibility in hybrid and modern architectures.",
-      "Taking it further, **DDS is enhanced with AI-enabled transformation capabilities**. Leveraging **Gen-AI and LLMs**, the platform can intelligently extract structured data from unstructured sources, recommend transformation logic, and generate derived attributes on the fly - preparing **high-quality, AI-ready datasets** during migrations.",
-      "DDS not only ensures smooth transitions but also **sets the foundation for long-term data intelligence and adaptability**.",
+    paragraphs: ["Precision. Performance. AI-Powered at Scale."],
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "An AI-powered migration solution built on Nyalazone's **Dynamic Data Source (DDS)**",
+          "Engineered for the complexities of **legacy systems, inconsistent formats, and dynamic transformation logic**",
+          "Handles attribute- and instance-level transformations across multi-source environments",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "**Fuzzy logic matching, pattern recognition, computed columns, and multi-source joins** for deduplication and standardization",
+          "**Proprietary in-memory processing engine** for real-time validation and iterative cleansing at high speed",
+          "Built-in **API configurator** for flexible hybrid and modern architecture connectivity",
+          "**Gen-AI and LLMs** extract structured data from unstructured sources and recommend transformation logic",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Dramatically reduces migration risk with **intelligent data validation and cleansing**",
+          "Prepares **high-quality, AI-ready datasets** for downstream use",
+          "Sets the foundation for **long-term data intelligence and adaptability**",
+          "Handles complex entity mappings that rule-based tools cannot",
+        ],
+      },
     ],
     boldFirstParagraph: false,
   },
@@ -653,12 +833,33 @@ export const detailPages: Record<string, TextPage> = {
       { value: "End-to-End", label: "Process Automation" },
     ],
     imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_gen_ai.png",
-    paragraphs: [
-      "In an era where agility and intelligence define enterprise success, Nyalazone delivers **next-generation Gen-AI enabled process automation** by integrating the powerful capabilities of **Dynamic Data Source (DDS) and Digital Customer Engagement (DCE) platforms**. Together, they form a cohesive, AI-powered automation ecosystem that transforms how organizations manage data, engage stakeholders, and drive operational excellence.",
-      "At the core, **DDS streamlines enterprise data transformation** with real-time enrichment, cleansing, and correlation. Its **in-memory engine and AI capabilities** convert unstructured data into structured, AI-ready datasets - extracting insights, detecting patterns, and enabling semantic understanding to drive intelligent automation.",
-      "Layered on top is **DCE, our enterprise-grade engagement platform** that connects stakeholders through **intelligent workflows and omni-channel communication**. DCE uses AI to orchestrate task instances, automate service ticketing, lead management, and notification flows, and streamline multi-party collaboration.",
-      "With Gen-AI integrated, it enhances interactions through **natural language understanding, AI-generated responses**, intelligent knowledge recommendations, and predictive engagement flows. DCE also powers advanced use cases like **QA process automation, invoice and PO verification**, and document validation - transforming routine tasks into proactive, self-evolving operations.",
-      "Together, **DDS and DCE enable organizations to move beyond rule-based automation** into a world of **adaptive, AI-driven process automation**. Our platforms automate not just actions, but decisions - delivering personalized, efficient service at scale.",
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "A **Gen-AI enabled automation ecosystem** integrating DDS and DCE platforms",
+          "Designed to transform how organizations **manage data, engage stakeholders, and drive operations**",
+          "Automates not just actions, but **decisions**",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "**DDS** enriches, cleanses, and correlates enterprise data in real time for AI-ready output",
+          "**DCE** orchestrates task instances, service ticketing, and lead management with intelligent workflows",
+          "**Gen-AI** enhances interactions through natural language understanding and AI-generated responses",
+          "Powers advanced use cases: **QA automation, invoice and PO verification, document validation**",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Moves beyond rule-based automation into **adaptive, AI-driven process intelligence**",
+          "Delivers **personalized, efficient service at scale** across all stakeholder touchpoints",
+          "Reduces manual overhead through **self-evolving, proactive operations**",
+          "Integrates with existing enterprise data and communication infrastructure",
+        ],
+      },
     ],
     boldFirstParagraph: false,
   },
@@ -671,12 +872,34 @@ export const detailPages: Record<string, TextPage> = {
       { value: "Context-Aware", label: "Customer Journeys" },
     ],
     imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_omnichannel.png",
-    paragraphs: [
-      "Seamless Experiences. Every Channel. Every Time.",
-      "In today's hyper-connected world, customers expect consistent, personalized experiences regardless of how or where they choose to engage. Nyalazone's **Digital Customer Engagement (DCE) platform** is purpose-built to deliver **true omni-channel engagement**, enabling organizations to connect with customers seamlessly across **web, mobile, email, SMS, WhatsApp, and more**.",
-      "At its core, **DCE unifies interactions across channels into a single intelligent workflow**, ensuring that customer journeys remain **continuous and context-aware**. Whether it's a support request initiated via email, a follow-up on WhatsApp, or a campaign touchpoint via SMS, DCE ensures all interactions are captured, coordinated, and personalized - without losing history or context.",
-      "Backed by **AI and automation**, the platform enables **dynamic engagement strategies** - automating notifications, personalizing outreach, and triggering contextual workflows based on customer behavior and preferences. Campaigns, alerts, and escalations are intelligently routed and delivered across the right channels at the right time.",
-      "By centralizing communication and enabling consistent messaging, DCE transforms fragmented interactions into **unified experiences**. The result: **improved customer satisfaction, faster resolution times, and stronger brand trust** - no matter the channel.",
+    paragraphs: ["Seamless Experiences. Every Channel. Every Time."],
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "A purpose-built **omnichannel engagement platform** powered by Nyalazone's DCE",
+          "Enables consistent, personalized customer experiences across **web, mobile, email, SMS, WhatsApp, and more**",
+          "Designed for organizations with **complex, multi-channel customer journeys**",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "Unifies interactions across channels into a **single intelligent workflow**",
+          "Keeps customer journeys **continuous and context-aware** — no lost history, no broken context",
+          "Automates notifications, personalizes outreach, and triggers **contextual workflows** based on behavior",
+          "Campaigns, alerts, and escalations routed to the **right channel at the right time**",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Drives **improved customer satisfaction, faster resolution times, and stronger brand trust**",
+          "AI-backed **dynamic engagement strategies** that adapt to customer preferences automatically",
+          "Centralizes communication for consistent messaging across all channels",
+          "Eliminates the operational overhead of managing fragmented channel tools",
+        ],
+      },
     ],
     boldFirstParagraph: false,
   },
@@ -689,14 +912,128 @@ export const detailPages: Record<string, TextPage> = {
       { value: "Automated", label: "Workflow Execution" },
     ],
     imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_ops_mngmt.png",
-    paragraphs: [
-      "Streamlined Execution. Clear Accountability. End-to-End Visibility.",
-      "Efficient operations require more than task lists - they demand structured orchestration, role clarity, and real-time visibility across every stage of execution. Nyalazone's **Digital Customer Engagement (DCE) platform** powers modern Operations Management through its **advanced Activity Orchestration engine**, ensuring that every task, stakeholder, and outcome is aligned and accounted for.",
-      "At the core of DCE is a **robust task management engine** that enables organizations to define, assign, and monitor tasks across teams and departments with precision. DCE structures workflows into **task groups and task instances** - clearly delineating responsibilities, dependencies, and SLAs at every stage.",
-      "The engine also supports **system tasks that can be automatically triggered** within workflows - reducing manual intervention and accelerating execution. Combined with **AI-enabled orchestration**, DCE can intelligently route tasks, surface insights, and optimize performance across operations.",
-      "Each activity is tracked end-to-end, with **built-in escalation rules, real-time status updates, and performance metrics**. With DCE at the helm, organizations gain a **centralized command center for operations** - eliminating ambiguity, enforcing accountability, and driving consistent execution.",
+    paragraphs: ["Streamlined Execution. Clear Accountability. End-to-End Visibility."],
+    paragraphSections: [
+      {
+        heading: "What is it?",
+        bullets: [
+          "An **AI-enabled operations management system** built on Nyalazone's DCE platform",
+          "Powers modern Operations Management through an **advanced Activity Orchestration engine**",
+          "Ensures every task, stakeholder, and outcome is **aligned and accounted for**",
+        ],
+      },
+      {
+        heading: "What does it do?",
+        bullets: [
+          "Defines, assigns, and monitors tasks across teams using **task groups and task instances**",
+          "**System tasks** that trigger automatically within workflows — reducing manual intervention",
+          "Intelligently routes tasks, surfaces insights, and **optimizes performance** across operations",
+          "**Built-in escalation rules, real-time status updates, and performance metrics** for every activity",
+        ],
+      },
+      {
+        heading: "Why use it?",
+        bullets: [
+          "Provides a **centralized command center for operations** — eliminating ambiguity",
+          "Enforces **clear accountability and consistent execution** at every stage",
+          "Combines **AI-enabled orchestration** with structured, dependency-aware workflows",
+          "Replaces disconnected task tools with a single, end-to-end visibility layer",
+        ],
+      },
     ],
     boldFirstParagraph: false,
+  },
+};
+
+export type PageSEO = {
+  title: string;
+  description: string;
+};
+
+export const pageSEOMeta: Record<string, PageSEO> = {
+  "/": {
+    title: "Nyalazone — AI-Enabled Digital Transformation",
+    description: "Nyalazone builds enterprise-grade AI, analytics, and digital engagement products for digital transformation. Explore our platforms and services.",
+  },
+  "/products": {
+    title: "Products | Nyalazone",
+    description: "Discover Nyalazone's enterprise products: Leggero DMAP, Leggero DDS, Digital Customer Engagement Platform (DCE), and Leggero.ai.",
+  },
+  "/offerings": {
+    title: "Offerings | Nyalazone",
+    description: "Explore Nyalazone's offerings: advanced data integration, audit and risk compliance, complex data migration, Gen-AI process automation, and omnichannel engagement.",
+  },
+  "/partners": {
+    title: "Partner Program | Nyalazone",
+    description: "Join the Nyalazone Partner Program to resell AI-driven platforms and deliver digital transformation services. Tiered model with co-branding and certifications.",
+  },
+  "/about-us": {
+    title: "About Us | Nyalazone",
+    description: "Nyalazone is a technology-first company driving digital transformation through AI, analytics, and intelligent enterprise engagement solutions.",
+  },
+  "/our-team-2": {
+    title: "Our Team | Nyalazone",
+    description: "Meet the Nyalazone leadership team driving innovation in AI, data management, and enterprise digital transformation.",
+  },
+  "/resources": {
+    title: "Resources | Nyalazone",
+    description: "Watch Nyalazone product demos and insights across AI lead management, document classification, meeting intelligence, and more.",
+  },
+  "/careers": {
+    title: "Careers | Nyalazone",
+    description: "Join Nyalazone and work on AI, deep learning, and enterprise digital transformation. We value curiosity, collaboration, and clean code.",
+  },
+  "/contact-us-2": {
+    title: "Contact Us | Nyalazone",
+    description: "Get in touch with Nyalazone. Offices in Australia, New Zealand, India, and Canada. Reach out to start your digital transformation journey.",
+  },
+  "/our-partner-program": {
+    title: "Our Partner Program | Nyalazone",
+    description: "Partner with Nyalazone to resell and deliver AI-driven platforms. Access preferential licensing, training, sales enablement, and co-branding support.",
+  },
+  "/our-professional-certifications": {
+    title: "Professional Certifications | Nyalazone",
+    description: "Earn Nyalazone professional certifications to validate expertise in AI-driven products and platforms. Structured learning paths and rigorous assessments.",
+  },
+  "/leggero-ai": {
+    title: "Leggero.ai — AI-Native Business Intelligence | Nyalazone",
+    description: "Leggero.ai is an AI-first BI platform that transforms enterprise data into decision-ready insight using natural language queries, governed analytics, and dynamic visualizations.",
+  },
+  "/leggero-data-management-analytics-platform": {
+    title: "Leggero DMAP — Data Management & Analytics Platform | Nyalazone",
+    description: "Leggero DMAP (Data Management & Analytics Platform) by Nyalazone manages multi-TB enterprise data with real-time reporting, advanced analytics, and flexible cloud or on-prem deployment.",
+  },
+  "/leggero-dynamic-data-source": {
+    title: "Leggero DDS — Dynamic Data Source | Nyalazone",
+    description: "Leggero DDS (Dynamic Data Source) is Nyalazone's high-performance data integration and transformation engine for complex migrations, real-time cleansing, and AI-ready dataset generation.",
+  },
+  "/digital-customer-engagement-platform": {
+    title: "Leggero DCE — Digital Customer Engagement Platform | Nyalazone",
+    description: "Leggero DCE (Digital Customer Engagement Platform) by Nyalazone delivers omnichannel enterprise engagement across web, mobile, email, SMS, and WhatsApp, powered by intelligent workflows and AI.",
+  },
+  "/advanced-data-integration-platforms": {
+    title: "Advanced Data Integration Platforms | Nyalazone",
+    description: "Nyalazone's DDS and Leggero DMAP deliver purpose-built, enterprise-grade data integration with real-time ingestion, AI-ready outputs, and advanced analytics intelligence.",
+  },
+  "/audit-and-risk-compliance": {
+    title: "Audit and Risk Compliance | Nyalazone",
+    description: "Automate audit workflows and risk compliance with Nyalazone's DCE and Leggero DMAP. Track findings, manage resolution, and access real-time compliance dashboards.",
+  },
+  "/complex-data-migration": {
+    title: "Complex Data Migration | Nyalazone",
+    description: "Nyalazone's Leggero DDS handles complex enterprise data migrations with AI-powered transformation, fuzzy logic matching, and in-memory high-speed processing.",
+  },
+  "/gen-ai-enabled-process-automation": {
+    title: "Gen-AI Enabled Process Automation | Nyalazone",
+    description: "Automate enterprise processes end-to-end with Nyalazone's Gen-AI powered DDS and DCE platforms — intelligent workflows, NLP understanding, and adaptive automation.",
+  },
+  "/omnichannel-customer-engagement": {
+    title: "Omnichannel Customer Engagement | Nyalazone",
+    description: "Deliver seamless, context-aware customer experiences across web, mobile, email, SMS, and WhatsApp with Nyalazone's DCE platform.",
+  },
+  "/operations-management-using-activity-orchestration": {
+    title: "Operations Management via Activity Orchestration | Nyalazone",
+    description: "Nyalazone's DCE platform powers operations management through AI-enabled activity orchestration, structured workflows, real-time task visibility, and automated execution.",
   },
 };
 

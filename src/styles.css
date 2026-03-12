@@ -2313,6 +2313,32 @@ textarea:focus-visible,
   margin: 0;
 }
 
+.cta-bar-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.cta-bar-input {
+  font-size: 0.92rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  width: 220px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.cta-bar-input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.cta-bar-input:focus {
+  background: rgba(255,255,255,0.25);
+}
+
 .cta-bar-btn {
   flex-shrink: 0;
   display: inline-block;
@@ -2322,7 +2348,8 @@ textarea:focus-visible,
   font-weight: 700;
   padding: 0.65rem 1.5rem;
   border-radius: 999px;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   white-space: nowrap;
   transition: background 150ms ease, color 150ms ease;
 }
@@ -2331,10 +2358,31 @@ textarea:focus-visible,
   background: #eef7ff;
 }
 
+.cta-bar-thanks {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.cta-bar-error {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.82rem;
+  margin: 0.3rem 0 0;
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   .cta-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .cta-bar-form {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .cta-bar-input {
+    width: 100%;
   }
 }
 

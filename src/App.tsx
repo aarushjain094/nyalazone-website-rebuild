@@ -825,13 +825,60 @@ function PageNav({ groups }: { groups: { title: string; to: string }[][] }) {
 }
 
 function CTABar() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/info@nyalazone.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "New Interest Submission",
+          _template: "table",
+          _captcha: "false",
+          email,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+      setEmail("");
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <div className="cta-bar">
       <div className="cta-bar-content">
         <h3 className="cta-bar-heading">Ready to see it in action?</h3>
-        <p className="cta-bar-sub">Talk to our team about how Nyalazone can work for your organization.</p>
+        <p className="cta-bar-sub">Leave your work email and we'll be in touch.</p>
       </div>
-      <Link to="/contact-us-2" className="cta-bar-btn">Get in Touch</Link>
+      {submitted ? (
+        <p className="cta-bar-thanks">Thanks, we'll be in touch soon.</p>
+      ) : (
+        <form className="cta-bar-form" onSubmit={handleSubmit}>
+          <input
+            className="cta-bar-input"
+            type="email"
+            placeholder="you@company.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <button className="cta-bar-btn" type="submit" disabled={submitting}>
+            {submitting ? "Submitting…" : "Get in Touch"}
+          </button>
+          {error && <p className="cta-bar-error">{error}</p>}
+        </form>
+      )}
     </div>
   );
 }

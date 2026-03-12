@@ -28,6 +28,7 @@ export type TextPage = {
   paragraphImageClassName?: string;
   contentClassName?: string;
   boldFirstParagraph?: boolean;
+  showCTA?: boolean;
   hideTitleSep?: boolean;
   animatedTagline?: boolean;
   pulsingTagline?: string;
@@ -567,6 +568,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
   "/leggero-data-management-analytics-platform": {
@@ -612,6 +614,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
     pulsingTagline: "Scalable Architecture. Advanced Visualizations. Low Total Cost of Ownership.",
   },
@@ -658,6 +661,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
   "/digital-customer-engagement-platform": {
@@ -702,6 +706,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
   "/advanced-data-integration-platforms": {
@@ -712,7 +717,11 @@ export const detailPages: Record<string, TextPage> = {
       { value: "Unified", label: "Analytics Intelligence" },
       { value: "AI / ML-Ready", label: "Dataset Output" },
     ],
-    imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_adv_data.png",
+    paragraphImages: [
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Off_adv_data.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DDS_1-1024x645.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DMAP_1-1024x683.png",
+    ],
     paragraphs: ["Purpose-Built Integration. Unified Intelligence. Scalable by Design."],
     paragraphSections: [
       {
@@ -742,6 +751,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
   "/audit-and-risk-compliance": {
@@ -752,7 +762,11 @@ export const detailPages: Record<string, TextPage> = {
       { value: "Real-Time", label: "Compliance Dashboards" },
       { value: "Multi-Channel", label: "Alerts & Escalations" },
     ],
-    imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_audit_risk.jpg",
+    paragraphImages: [
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Off_audit_risk.jpg",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DCE_1-1024x683.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DMAP_2-1024x694.png",
+    ],
     paragraphs: ["Structured Workflows. Intelligent Oversight. Actionable Insights."],
     paragraphSections: [
       {
@@ -782,6 +796,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
   "/complex-data-migration": {
@@ -792,7 +807,11 @@ export const detailPages: Record<string, TextPage> = {
       { value: "Fuzzy Logic", label: "Intelligent Matching" },
       { value: "In-Memory", label: "High-Speed Processing" },
     ],
-    imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_data_mig_1024.png",
+    paragraphImages: [
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Off_data_mig_1024.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DDS_2-1024x673.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DDS_3-1024x654.png",
+    ],
     paragraphs: ["Precision. Performance. AI-Powered at Scale."],
     paragraphSections: [
       {
@@ -822,6 +841,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
   "/gen-ai-enabled-process-automation": {
@@ -832,7 +852,11 @@ export const detailPages: Record<string, TextPage> = {
       { value: "NLP", label: "Natural Language Understanding" },
       { value: "End-to-End", label: "Process Automation" },
     ],
-    imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_gen_ai.png",
+    paragraphImages: [
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Off_gen_ai.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DDS_3-1024x654.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DCE_3-1024x690.png",
+    ],
     paragraphSections: [
       {
         heading: "What is it?",
@@ -861,6 +885,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
   "/omnichannel-customer-engagement": {
@@ -871,7 +896,11 @@ export const detailPages: Record<string, TextPage> = {
       { value: "AI-Driven", label: "Campaign Automation" },
       { value: "Context-Aware", label: "Customer Journeys" },
     ],
-    imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_omnichannel.png",
+    paragraphImages: [
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Off_omnichannel.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DCE_1-1024x683.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DCE_3-1024x690.png",
+    ],
     paragraphs: ["Seamless Experiences. Every Channel. Every Time."],
     paragraphSections: [
       {
@@ -901,6 +930,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
   "/operations-management-using-activity-orchestration": {
@@ -911,7 +941,11 @@ export const detailPages: Record<string, TextPage> = {
       { value: "Real-Time", label: "Task Visibility" },
       { value: "Automated", label: "Workflow Execution" },
     ],
-    imageUrl: "https://nyalazone.ai/wp-content/uploads/2025/04/Off_ops_mngmt.png",
+    paragraphImages: [
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Off_ops_mngmt.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DCE_3-1024x690.png",
+      "https://nyalazone.ai/wp-content/uploads/2025/04/Prod_DCE_4-1024x682.png",
+    ],
     paragraphs: ["Streamlined Execution. Clear Accountability. End-to-End Visibility."],
     paragraphSections: [
       {
@@ -941,6 +975,7 @@ export const detailPages: Record<string, TextPage> = {
         ],
       },
     ],
+    showCTA: true,
     boldFirstParagraph: false,
   },
 };
@@ -948,20 +983,24 @@ export const detailPages: Record<string, TextPage> = {
 export type PageSEO = {
   title: string;
   description: string;
+  ogImage?: string;
 };
 
 export const pageSEOMeta: Record<string, PageSEO> = {
   "/": {
     title: "Nyalazone — AI-Enabled Digital Transformation",
     description: "Nyalazone builds enterprise-grade AI, analytics, and digital engagement products for digital transformation. Explore our platforms and services.",
+    ogImage: "https://nyalazone.ai/wp-content/uploads/2021/11/Rev-slider-img-1.jpg",
   },
   "/products": {
     title: "Products | Nyalazone",
     description: "Discover Nyalazone's enterprise products: Leggero DMAP, Leggero DDS, Digital Customer Engagement Platform (DCE), and Leggero.ai.",
+    ogImage: "https://nyalazone.ai/wp-content/uploads/2026/01/Group-13.png",
   },
   "/offerings": {
     title: "Offerings | Nyalazone",
     description: "Explore Nyalazone's offerings: advanced data integration, audit and risk compliance, complex data migration, Gen-AI process automation, and omnichannel engagement.",
+    ogImage: "https://nyalazone.ai/wp-content/uploads/2025/04/LP_AI_enabled.png",
   },
   "/partners": {
     title: "Partner Program | Nyalazone",

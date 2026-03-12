@@ -99,14 +99,28 @@ function SEOHead() {
   const meta = pageSEOMeta[pathname];
   const title = meta?.title ?? "Nyalazone";
   const description = meta?.description ?? "Nyalazone builds AI, analytics, and digital engagement products for enterprise transformation.";
+  const detailPage = detailPages[pathname];
+  const ogImage =
+    meta?.ogImage ??
+    detailPage?.paragraphImages?.[0] ??
+    detailPage?.imageUrl ??
+    "https://nyalazone.ai/wp-content/uploads/2021/11/Rev-slider-img-1.jpg";
+  const siteUrl = "https://aarushjain094.github.io/nyalazone-website-rebuild";
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta property="og:site_name" content="Nyalazone" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={`${siteUrl}${pathname}`} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
-      <link rel="canonical" href={`https://nyalazone.ai${pathname}`} />
+      <meta property="og:image" content={ogImage} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
+      <link rel="canonical" href={`${siteUrl}${pathname}`} />
     </Helmet>
   );
 }
@@ -810,6 +824,18 @@ function PageNav({ groups }: { groups: { title: string; to: string }[][] }) {
   );
 }
 
+function CTABar() {
+  return (
+    <div className="cta-bar">
+      <div className="cta-bar-content">
+        <h3 className="cta-bar-heading">Ready to see it in action?</h3>
+        <p className="cta-bar-sub">Talk to our team about how Nyalazone can work for your organization.</p>
+      </div>
+      <Link to="/contact-us-2" className="cta-bar-btn">Get in Touch</Link>
+    </div>
+  );
+}
+
 function TextPageView({ page }: { page: TextPage }) {
   const location = useLocation();
   const poweredOfferings = productRelatedOfferings[location.pathname] ?? [];
@@ -846,6 +872,7 @@ function TextPageView({ page }: { page: TextPage }) {
       ) : (
         <PageContent page={page} />
       )}
+      {page.showCTA && <CTABar />}
       {poweredOfferings.length > 0 && (
         <div className="powered-offerings">
           <span className="powered-offerings-label">Powers these offerings:</span>
